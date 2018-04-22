@@ -194,8 +194,8 @@ master: checks update-mcdp update-software
 		--symbols $(tex-symbols) \
 		-o out/master \
 		--permalink_prefix http://purl.org/dth/ \
-		--split duckuments-dist/master/duckiebook/ \
-		--pdf duckuments-dist/master/duckiebook.pdf \
+		--split       duckuments-dist/master/duckiebook/ \
+		--pdf         duckuments-dist/master/duckiebook.pdf \
 		--output_file duckuments-dist/master/duckiebook.html \
 		-c "config echo 1; config colorize 1; rparmake"
 
@@ -215,9 +215,9 @@ duckumentation: checks update-mcdp update-software
 		--symbols $(tex-symbols) \
 		-o out/duckumentation \
 		--permalink_prefix http://purl.org/dt/duckumentation/ \
-		--split duckuments-dist/duckumentation/duckumentation/ \
-		--pdf duckuments-dist/duckumentation/duckumentation.pdf \
-		--output_file duckuments-dist/master/duckumentation.html \
+		--split       duckuments-dist/duckumentation/duckumentation/ \
+		--pdf         duckuments-dist/duckumentation/duckumentation.pdf \
+		--output_file duckuments-dist/duckumentation/duckumentation.html \
 		-c "config echo 1; config colorize 1; rmake"
 
 
