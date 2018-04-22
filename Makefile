@@ -218,7 +218,7 @@ duckumentation: checks update-mcdp update-software
 		--split duckuments-dist/duckumentation/duckumentation/ \
 		--pdf duckuments-dist/duckumentation/duckumentation.pdf \
 		--output_file duckuments-dist/master/duckumentation.html \
-		-c "config echo 1; config colorize 1; rparmake"
+		-c "config echo 1; config colorize 1; rmake"
 
 
 duckumentation-clean:
