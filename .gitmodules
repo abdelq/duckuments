@@ -1,0 +1,3 @@
+[submodule "git@github.com:AndreaCensi/mcdp.git"]
+	path = mcdp
+	url = git://github.com/AndreaCensi/mcdp.git

@@ -44,13 +44,17 @@ jobs:
 #            name: check out duckuments-dist
 #            command: |
 #                mkdir -p duckuments-dist
-        - run:
-            name: checkout MCDP
-            command: |
-                git lfs clone -b nl-devel --depth 1 git@github.com:AndreaCensi/mcdp
+#        - run:
+#            name: checkout MCDP
+#            command: |
+#                git lfs clone -b nl-devel --depth 1 git@github.com:AndreaCensi/mcdp
+
         - run:
             name: setup MCDP
             command: |
+                git submodule sync --recursive
+                git submodule update --init --recursive
+
                 pip install -r mcdp/requirements.txt
                 cd mcdp && python setup.py develop
 
