@@ -161,8 +161,8 @@ You won't really know if it's right until you verify it though! onto the next se
 Construct a calibration station similar to the one in [](#fig:kinematic_calibration):
 
 <div figure-id="fig:kinematic_calibration" figure-caption="Kinematic calibration verification setup">
-     <img src="kinematic_calibration1.png" style='width: 30em'/>
-     <img src="kinematic_calibration2.png" style='width: 30em'/>
+     <img src="kinematic_calibration1.jpg" style='width: 30em'/>
+     <img src="kinematic_calibration2.jpg" style='width: 30em'/>
 </div>
 
 The following are the specs for this 3x1 mat "runway":

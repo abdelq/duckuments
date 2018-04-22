@@ -205,7 +205,7 @@ The far left is the original image where we got the data from. The second from l
 
 <div>
     <div>
-        <img src="original.png" style="float: left; width: 23%; margin-right: 1%; margin-bottom: 0.5em;" />
+        <img src="original.jpg" style="float: left; width: 23%; margin-right: 1%; margin-bottom: 0.5em;" />
         <img src="rgb.png" style="float: left; width: 23%; margin-right: 1%; margin-bottom: 0.5em;"/>
         <img src="hsv.png" style="float: left; width: 23%; margin-right: 1%; margin-bottom: 0.5em;"/>
         <img src="lab.png" style="float: left; width: 23%; margin-right: 1%; margin-bottom: 0.5em;"/>        
@@ -215,7 +215,7 @@ The far left is the original image where we got the data from. The second from l
 
 <div>
     <div>
-        <img src="original2.png" style="float: left; width: 23%; margin-right: 1%; margin-bottom: 0.5em;"/>
+        <img src="original2.jpg" style="float: left; width: 23%; margin-right: 1%; margin-bottom: 0.5em;"/>
         <img src="rgb2.png" style="float: left; width: 23%; margin-right: 1%; margin-bottom: 0.5em;"/>
         <img src="hsv2.png" style="float: left; width: 23%; margin-right: 1%; margin-bottom: 0.5em;"/>
         <img src="lab2.png" style="float: left; width: 23%; margin-right: 1%; margin-bottom: 0.5em;"/>        

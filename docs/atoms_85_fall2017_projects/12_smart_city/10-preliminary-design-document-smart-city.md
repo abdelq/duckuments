@@ -86,7 +86,7 @@ Since the most common PD in Duckietown is a Raspberry Pi, we can design a USB pl
 Problem: The primary problem with this approach is its difficult, especially given the project’s short timeframe. However, we could focus on designing and building a prototype that works that could then be mass produced and implemented for the whole Duckietown sometime in the future.
 
 
-![Plug 1](plug1.png)
+![Plug 1](plug1.jpg)
 ![Plug 2](plug2.png)
 ![Plug 3](plug3.png)
 
