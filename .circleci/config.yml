@@ -2,7 +2,7 @@ version: 2
 jobs:
     build:
         docker:
-        - image: andreacensi/duckietown-xenial-kinetic:18
+        - image: andreacensi/duckietown-xenial-kinetic:19
         steps:
         - checkout
 
@@ -28,18 +28,19 @@ jobs:
 #         echo
 #         echo APT install
 #         apt install -y git-lfs
-
-        - run:
-            name: check out duckuments-dist
-            command: |
-                mkdir -p duckuments-dist
+#
+#        - run:
+#            name: check out duckuments-dist
+#            command: |
+#                mkdir -p duckuments-dist
         - run:
             name: checkout MCDP
             command: |
-                git lfs clone -b duckuments --depth 1 git@github.com:AndreaCensi/mcdp
+                git lfs clone -b nl-level --depth 1 git@github.com:AndreaCensi/mcdp
         - run:
             name: setup MCDP
             command: |
+                pip install -r mcdp/requirements.txt
                 cd mcdp && python setup.py develop
         - run:
             name: Check Programs
@@ -55,7 +56,7 @@ jobs:
         - run:
             name: Compile HTML version
             command: |
-                make circle
+                make master-html
 
         - store_artifacts:
               path: duckuments-dist
