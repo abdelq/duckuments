@@ -191,41 +191,55 @@ master: checks update-mcdp update-software
 	DISABLE_CONTRACTS=1 mcdp-render-manual \
 		--src $(src) \
 		--stylesheet v_manual_split \
-		--mathjax 0 \
 		--symbols $(tex-symbols) \
-		-o out/master/html \
+		-o out/master \
 		--permalink_prefix http://purl.org/dth/ \
 		--split duckuments-dist/master/duckiebook/ \
-		--pdf duckuments-dist/master/duckiebook.large.pdf \
+		--pdf duckuments-dist/master/duckiebook.pdf \
 		--output_file duckuments-dist/master/duckiebook.html \
 		-c "config echo 1; config colorize 1; rparmake"
 
-	./reduce-pdf-size.sh \
-		duckuments-dist/master/duckiebook.large.pdf \
-		duckuments-dist/master/duckiebook.pdf
+#	./reduce-pdf-size.sh \
+#		duckuments-dist/master/duckiebook.large.pdf \
+#		duckuments-dist/master/duckiebook.pdf
 
 master-clean:
 	rm -rf out/master
 
+
+duckumentation: checks update-mcdp update-software
+	DISABLE_CONTRACTS=1 mcdp-render-manual \
+		--src docs/atoms_15_contrib/ \
+		--stylesheet v_manual_split \
+		--symbols $(tex-symbols) \
+		-o out/duckumentation \
+		--permalink_prefix http://purl.org/dt/duckumentation/ \
+		--split duckuments-dist/duckumentation/duckumentation/ \
+		--pdf duckuments-dist/duckumentation/duckumentation.pdf \
+		--output_file duckuments-dist/master/duckumentation.html \
+		-c "config echo 1; config colorize 1; rparmake"
+
+
+duckumentation-clean:
+	rm -rf out/duckumentation
 
 fall2017: checks update-mcdp update-software
 
 	DISABLE_CONTRACTS=1 mcdp-render-manual \
 		--src $(src) \
 		--stylesheet v_manual_split \
-		--mathjax 0 \
 		--no_resolve_references \
 		--symbols $(tex-symbols) \
 		--compose fall2017.version.yaml \
-		-o out/fall2017/prepare \
+		-o out/fall2017\
 		--output_file duckuments-dist/fall2017/duckiebook.html \
 		--split duckuments-dist/fall2017/duckiebook/ \
-		--pdf duckuments-dist/fall2017/duckiebook.large.pdf \
+		--pdf duckuments-dist/fall2017/duckiebook.pdf \
 		 -c "config echo 1; config colorize 1; rparmake"
-
-	./reduce-pdf-size.sh \
-		duckuments-dist/fall2017/duckiebook.large.pdf \
-		duckuments-dist/fall2017/duckiebook.pdf
+	#
+	# ./reduce-pdf-size.sh \
+	# 	duckuments-dist/fall2017/duckiebook.large.pdf \
+	# 	duckuments-dist/fall2017/duckiebook.pdf
 
 fall2017-clean:
 	rm -rf out/fall2017
