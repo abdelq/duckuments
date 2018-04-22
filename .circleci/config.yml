@@ -41,7 +41,7 @@ jobs:
         - run:
             name: checkout MCDP
             command: |
-                git lfs clone -b nl-level --depth 1 git@github.com:AndreaCensi/mcdp
+                git lfs clone -b nl-devel --depth 1 git@github.com:AndreaCensi/mcdp
         - run:
             name: setup MCDP
             command: |
