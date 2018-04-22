@@ -59,9 +59,9 @@ jobs:
                 ln -s /tmp/git_repos/duckietown/Software/master/ duckietown
 
         - run:
-            name: Compile HTML version
+            name: Compile duckumentation
             command: |
-                make master-html
+                make duckumentation
 
         - store_artifacts:
               path: duckuments-dist
