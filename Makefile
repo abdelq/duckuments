@@ -210,6 +210,7 @@ master-clean:
 duckumentation: checks update-mcdp update-software
 	DISABLE_CONTRACTS=1 mcdp-render-manual \
 		--src docs/atoms_15_contrib/ \
+		--resources docs/ \
 		--stylesheet v_manual_split \
 		--symbols $(tex-symbols) \
 		-o out/duckumentation \
