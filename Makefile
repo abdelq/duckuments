@@ -217,7 +217,7 @@ class_fall2017: checks update-mcdp update-software
 	./run-book $@ docs/atoms_80_fall2017_info
 
 learning_materials: checks update-mcdp update-software
-	./run-book $@ docs/learning_materials
+	./run-book $@ docs/atoms_30_learning_materials
 
 class_fall2017_projects: checks update-mcdp update-software
 	./run-book $@ docs/atoms_85_fall2017_projects

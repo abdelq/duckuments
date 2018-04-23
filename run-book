@@ -4,15 +4,15 @@ set -e
 short=$1
 src=$2
 
-echo CI=$CI
-
 if [ "$CI" = "" ]
 then
-   echo "Not on Circle, using rparmake"
+   echo "Not on Circle, using parallel compilation."
    cmd=rparmake
+   branch=`git rev-parse --abbrev-ref HEAD`
 else
-   echo "On Circle, using rmake"
+   echo "On Circle, not using parallel compilation to avoid running out of memory."
    cmd=rmake
+   branch=${CIRCLE_BRANCH}
 fi
 
 dist=duckuments-dist
@@ -25,8 +25,8 @@ DISABLE_CONTRACTS=1 mcdp-render-manual \
     --stylesheet v_manual_split \
     --symbols docs/symbols.tex \
     -o out/${short} \
-    --permalink_prefix http://purl.org/dt/${short}/ \
-    --split       ${dist}/${short}/${short}/ \
-    --pdf         ${dist}/${short}/${short}.pdf \
-    --output_file ${dist}/${short}/${short}.html \
+    --permalink_prefix http://docs.duckietown.org/branch/${branch}/${short}/out/link.html \
+    --split       ${dist}/${short}/out/ \
+    --pdf         ${dist}/${short}/out.pdf \
+    --output_file ${dist}/${short}/out.html \
     -c "config echo 1; ${cmd}"
