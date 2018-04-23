@@ -385,3 +385,6 @@ circle:
 # 	git -C duckuments-dist add fall2017
 # 	git -C duckuments-dist commit -a -m "automatic compilation $(shell date)"
 # 	git -C duckuments-dist push --force
+
+builds:
+	python -m mcdp_docs.sync_from_circle duckietown duckuments builds builds/duckuments.html
