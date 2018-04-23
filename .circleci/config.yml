@@ -17,44 +17,11 @@ jobs:
                 apt install -y nodejs
                 npm install MathJax-node jsdom@9.3 less
 
-# - run:
-#     name: deps
-#     command: |
-#         export DEBIAN_FRONTEND=noninteractive
-#         apt install -y gnupg ghostscript
-#
-#         pip install -U decorator>=4.1.0
-#
-#         # pip install  numpy lxml matplotlib pillow junit_xml
-#
-#         apt install -y software-properties-common
-#         echo adding repository
-#         add-apt-repository -y ppa:git-core/ppa
-#         echo adding git lfs
-#         curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
-#         echo
-#         apt-key  --version || :
-#         echo APT update
-#         apt update
-#         echo
-#         echo APT install
-#         apt install -y git-lfs
-#
-#        - run:
-#            name: check out duckuments-dist
-#            command: |
-#                mkdir -p duckuments-dist
-#        - run:
-#            name: checkout MCDP
-#            command: |
-#                git lfs clone -b nl-devel --depth 1 git@github.com:AndreaCensi/mcdp
-
         - run:
             name: setup MCDP
             command: |
                 git submodule sync --recursive
                 git submodule update --init --recursive
-
                 pip install -r mcdp/requirements.txt
                 cd mcdp && python setup.py develop
 
@@ -87,45 +54,3 @@ jobs:
         - store_artifacts:
               path: out/package.tgz
               destination: out/package.tgz
-
-# - run:
-#     name: NPM
-#     command: |
-#         echo "Before installing NPM"
-#         nodejs --version || echo "No nodejs installed"
-#         gpg --version
-#         curl -sL https://deb.nodesource.com/setup_6.x |  bash -E
-#
-#         apt-get update
-#
-#         apt-get -qq -y install build-essential nodejs
-#
-#         /usr/bin/npm config set loglevel warn
-#
-#         /usr/bin/npm --loglevel=silent install -g MathJax-node jsdom@9.3 less
-#
-#         nodejs --version
-#
-#         #add-apt-repository -y ppa:lyx-devel/release
-#         #apt-get install lyx
-#         #lyx --version
-# - run:
-#     name: NPM
-#     command: |
-#         npm install MathJax-node jsdom@9.3 less
-# - run:
-#     name: install fonts
-#     command:  |
-#         cp -R fonts /usr/share/fonts/duckuments-fonts
-#         fc-cache -f -v
-#         # XXX: failure
-#         #fc-list | grep STIX
-#         #fc-list | grep Symbola
-# - run:
-#     name: Compile PDF version
-#     command: |
-#         make compile-pdf
-#
-# - store_artifacts:
-#     path: duckuments-dist
-#     destination: duckuments-dist

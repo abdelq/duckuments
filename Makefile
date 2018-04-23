@@ -201,13 +201,43 @@ master: checks update-mcdp update-software
 master-clean:
 	rm -rf out/master
 
-books: duckumentation the_duckietown_project
+books: \
+	duckumentation \
+	the_duckietown_project \
+	opmanual_duckiebot_base \
+	opmanual_duckiebot_fancy \
+	opmanual_duckietown \
+	software_carpentry \
+	software_devel \
+	software_architecture \
+	fall2017
 
 duckumentation: checks update-mcdp update-software
-	./run-book duckumentation docs/atoms_15_duckumentation
+	./run-book $@ docs/atoms_15_duckumentation
 
 the_duckietown_project: checks update-mcdp update-software
-	./run-book the_duckietown_project docs/atoms_10_the_duckietown_project
+	./run-book $@ docs/atoms_10_the_duckietown_project
+
+opmanual_duckiebot_base: checks update-mcdp update-software
+	./run-book $@ docs/atoms_17_setup_duckiebot_DB17-jwd
+
+opmanual_duckiebot_fancy: checks update-mcdp update-software
+	./run-book $@ docs/atoms_19_setup_duckiebot_DB17-wjdcl
+
+opmanual_duckietown: checks update-mcdp update-software
+	./run-book $@ docs/atoms_18_setup_duckietown
+
+software_carpentry: checks update-mcdp update-software
+	./run-book $@ docs/atoms_60_software_reference/12_software_carpentry
+
+software_devel: checks update-mcdp update-software
+	./run-book $@ docs/atoms_70_software_devel_guide
+
+software_architecture: checks update-mcdp update-software
+	./run-book $@ docs/atoms_80_duckietown_software
+
+fall2017: checks update-mcdp update-software
+	./run-book $@ docs/atoms_80_fall2017_info:docs/atoms_85_fall2017_projects
 
 clean:
 	rm -rf out
