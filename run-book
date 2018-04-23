@@ -14,4 +14,4 @@ DISABLE_CONTRACTS=1 mcdp-render-manual \
     --split       duckuments-dist/${short}/${short}/ \
     --pdf         duckuments-dist/${short}/${short}.pdf \
     --output_file duckuments-dist/${short}/${short}.html \
-    -c "config echo 1; config colorize 1; rmake"
+    -c "config echo 1; rmake"

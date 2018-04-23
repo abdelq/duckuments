@@ -40,7 +40,8 @@ jobs:
         - run:
             name: Compile all books
             command: |
-                make -j books
+                echo "config colorize 0" > .compmake.rc
+                make  books
 
         - store_artifacts:
               path: duckuments-dist
