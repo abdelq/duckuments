@@ -208,7 +208,22 @@ books: \
 	software_carpentry \
 	software_devel \
 	software_architecture \
-	class_fall2017
+	class_fall2017 \
+	class_fall2017_projects \
+	learning_materials \
+	exercises
+
+class_fall2017: checks update-mcdp update-software
+	./run-book $@ docs/atoms_80_fall2017_info
+
+learning_materials: checks update-mcdp update-software
+	./run-book $@ docs/learning_materials
+
+class_fall2017_projects: checks update-mcdp update-software
+	./run-book $@ docs/atoms_85_fall2017_projects
+
+exercises: checks update-mcdp update-software
+	./run-book $@ docs/atoms_40_exercises
 
 duckumentation: checks update-mcdp update-software
 	./run-book $@ docs/atoms_15_duckumentation
