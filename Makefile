@@ -186,8 +186,6 @@ index:
 
 
 
-
-
 master: checks update-mcdp update-software
 	DISABLE_CONTRACTS=1 mcdp-render-manual \
 		--src $(src) \
@@ -211,10 +209,9 @@ duckumentation: checks update-mcdp update-software
 the_duckietown_project: checks update-mcdp update-software
 	./run-book the_duckietown_project docs/atoms_10_the_duckietown_project
 
+clean:
+	rm -rf out
 
-
-duckumentation-clean:
-	rm -rf out/duckumentation
 
 fall2017: checks update-mcdp update-software
 
