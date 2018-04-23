@@ -4,11 +4,9 @@ set -ex
 short=$1
 src=$2
 
-echo CIRCLE=$CIRCLE
-env
-cmd=rparmake
+echo CI=$CI
 
-if [ "$CIRCLE" = "1" ]
+if [ "CI" = "1" ]
 then
    echo "On Circle, using rmake"
    cmd=rmake
