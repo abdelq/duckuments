@@ -199,10 +199,6 @@ master: checks update-mcdp update-software
 		--output_file duckuments-dist/master/duckiebook.html \
 		-c "config echo 1; config colorize 1; rparmake"
 
-#	./reduce-pdf-size.sh \
-#		duckuments-dist/master/duckiebook.large.pdf \
-#		duckuments-dist/master/duckiebook.pdf
-
 master-clean:
 	rm -rf out/master
 
@@ -237,11 +233,7 @@ fall2017: checks update-mcdp update-software
 		--split duckuments-dist/fall2017/duckiebook/ \
 		--pdf duckuments-dist/fall2017/duckiebook.pdf \
 		 -c "config echo 1; config colorize 1; rparmake"
-	#
-	# ./reduce-pdf-size.sh \
-	# 	duckuments-dist/fall2017/duckiebook.large.pdf \
-	# 	duckuments-dist/fall2017/duckiebook.pdf
-
+	
 fall2017-clean:
 	rm -rf out/fall2017
 
