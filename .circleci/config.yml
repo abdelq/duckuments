@@ -71,13 +71,22 @@ jobs:
                 ln -s /tmp/git_repos/duckietown/Software/master/ duckietown
 
         - run:
-            name: Compile duckumentation
+            name: Compile all books
             command: |
-                make duckumentation
+                make -j books
 
         - store_artifacts:
               path: duckuments-dist
               destination: duckuments-dist
+
+        - run:
+            name: Package artifacts
+            command:  |
+                bash package-art.sh out/package.tgz
+
+        - store_artifacts:
+              path: out/package.tgz
+              destination: out/package.tgz
 
 # - run:
 #     name: NPM

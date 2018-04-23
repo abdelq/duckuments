@@ -170,7 +170,8 @@ master-pdf: checks check-programs-pdf
 
 
 update-mcdp:
-	-git -C mcdp/ pull
+	#
+	# -git -C mcdp/ pull
 
 update-software: checks
 	-git -C $(duckietown-software) pull
@@ -202,19 +203,14 @@ master: checks update-mcdp update-software
 master-clean:
 	rm -rf out/master
 
+books: duckumentation the_duckietown_project
 
 duckumentation: checks update-mcdp update-software
-	DISABLE_CONTRACTS=1 mcdp-render-manual \
-		--src docs/atoms_15_contrib/ \
-		--resources docs/ \
-		--stylesheet v_manual_split \
-		--symbols $(tex-symbols) \
-		-o out/duckumentation \
-		--permalink_prefix http://purl.org/dt/duckumentation/ \
-		--split       duckuments-dist/duckumentation/duckumentation/ \
-		--pdf         duckuments-dist/duckumentation/duckumentation.pdf \
-		--output_file duckuments-dist/duckumentation/duckumentation.html \
-		-c "config echo 1; config colorize 1; rmake"
+	./run-book duckumentation docs/atoms_15_duckumentation
+
+the_duckietown_project: checks update-mcdp update-software
+	./run-book the_duckietown_project docs/atoms_10_the_duckietown_project
+
 
 
 duckumentation-clean:
@@ -233,7 +229,7 @@ fall2017: checks update-mcdp update-software
 		--split duckuments-dist/fall2017/duckiebook/ \
 		--pdf duckuments-dist/fall2017/duckiebook.pdf \
 		 -c "config echo 1; config colorize 1; rparmake"
-	
+
 fall2017-clean:
 	rm -rf out/fall2017
 

@@ -1,0 +1,17 @@
+#!/bin/bash
+set -ex
+
+short=$1
+src=$2
+
+DISABLE_CONTRACTS=1 mcdp-render-manual \
+    --src ${src} \
+    --resources docs \
+    --stylesheet v_manual_split \
+    --symbols docs/symbols.tex \
+    -o out/duckumentation \
+    --permalink_prefix http://purl.org/dt/${short}/ \
+    --split       duckuments-dist/${short}/${short}/ \
+    --pdf         duckuments-dist/${short}/${short}.pdf \
+    --output_file duckuments-dist/${short}/${short}.html \
+    -c "config echo 1; config colorize 1; rmake"
