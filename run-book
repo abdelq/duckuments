@@ -9,7 +9,7 @@ DISABLE_CONTRACTS=1 mcdp-render-manual \
     --resources docs \
     --stylesheet v_manual_split \
     --symbols docs/symbols.tex \
-    -o out/duckumentation \
+    -o out/${short} \
     --permalink_prefix http://purl.org/dt/${short}/ \
     --split       duckuments-dist/${short}/${short}/ \
     --pdf         duckuments-dist/${short}/${short}.pdf \
