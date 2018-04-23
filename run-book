@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 short=$1
@@ -16,6 +16,8 @@ else
 fi
 
 dist=duckuments-dist
+
+mkdir -p ${dist}
 
 DISABLE_CONTRACTS=1 mcdp-render-manual \
     --src ${src} \
