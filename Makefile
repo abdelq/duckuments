@@ -210,7 +210,7 @@ books: \
 	software_carpentry \
 	software_devel \
 	software_architecture \
-	fall2017
+	class_fall2017
 
 duckumentation: checks update-mcdp update-software
 	./run-book $@ docs/atoms_15_duckumentation
@@ -236,7 +236,7 @@ software_devel: checks update-mcdp update-software
 software_architecture: checks update-mcdp update-software
 	./run-book $@ docs/atoms_80_duckietown_software
 
-fall2017: checks update-mcdp update-software
+class_fall2017: checks update-mcdp update-software
 	./run-book $@ docs/atoms_80_fall2017_info:docs/atoms_85_fall2017_projects
 
 clean:
@@ -255,7 +255,7 @@ fall2017: checks update-mcdp update-software
 		--output_file duckuments-dist/fall2017/duckiebook.html \
 		--split duckuments-dist/fall2017/duckiebook/ \
 		--pdf duckuments-dist/fall2017/duckiebook.pdf \
-		 -c "config echo 1; config colorize 1; rparmake"
+		 -c "config echo 1; rparmake"
 
 fall2017-clean:
 	rm -rf out/fall2017
