@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -e
 
 short=$1
 src=$2
@@ -15,14 +15,16 @@ else
    cmd=rmake
 fi
 
+dist=duckuments-dist
+
 DISABLE_CONTRACTS=1 mcdp-render-manual \
     --src ${src} \
-    --resources docs \
+    --resources docs:${dist} \
     --stylesheet v_manual_split \
     --symbols docs/symbols.tex \
     -o out/${short} \
     --permalink_prefix http://purl.org/dt/${short}/ \
-    --split       duckuments-dist/${short}/${short}/ \
-    --pdf         duckuments-dist/${short}/${short}.pdf \
-    --output_file duckuments-dist/${short}/${short}.html \
+    --split       ${dist}/${short}/${short}/ \
+    --pdf         ${dist}/${short}/${short}.pdf \
+    --output_file ${dist}/${short}/${short}.html \
     -c "config echo 1; ${cmd}"

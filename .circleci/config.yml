@@ -43,6 +43,9 @@ jobs:
                 echo "config colorize 0" > .compmake.rc
                 # 2 cpus
                 make -j2 books
+                # recompile for cross-references
+                make clean
+                make -j2 books
 
         - store_artifacts:
               path: duckuments-dist
