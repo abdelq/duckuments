@@ -44,7 +44,6 @@ jobs:
                 # 2 cpus
                 make -j2 books
                 # recompile for cross-references
-                make clean
                 make -j2 books
 
         - store_artifacts:
