@@ -6,13 +6,13 @@ src=$2
 
 echo CI=$CI
 
-if [ "CI" = "1" ]
+if [ "$CI" = "" ]
 then
-   echo "On Circle, using rmake"
-   cmd=rmake
-else
    echo "Not on Circle, using rparmake"
    cmd=rparmake
+else
+   echo "On Circle, using rmake"
+   cmd=rmake
 fi
 
 DISABLE_CONTRACTS=1 mcdp-render-manual \
