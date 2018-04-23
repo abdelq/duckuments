@@ -4,6 +4,19 @@ set -ex
 short=$1
 src=$2
 
+echo CIRCLE=$CIRCLE
+env
+cmd=rparmake
+
+if [ "$CIRCLE" = "1" ]
+then
+   echo "On Circle, using rmake"
+   cmd=rmake
+else
+   echo "Not on Circle, using rparmake"
+   cmd=rparmake
+fi
+
 DISABLE_CONTRACTS=1 mcdp-render-manual \
     --src ${src} \
     --resources docs \
@@ -14,4 +27,4 @@ DISABLE_CONTRACTS=1 mcdp-render-manual \
     --split       duckuments-dist/${short}/${short}/ \
     --pdf         duckuments-dist/${short}/${short}.pdf \
     --output_file duckuments-dist/${short}/${short}.html \
-    -c "config echo 1; rmake"
+    -c "config echo 1; ${cmd}"
