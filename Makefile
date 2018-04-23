@@ -162,8 +162,6 @@ automatic-compile-fall2017-pdf:
 upload:
 	echo Not uploading
 
-clean:
-	$(MAKE) master-clean
 
 master-pdf: checks check-programs-pdf
 	echo "This is now already implemented by make master"
@@ -385,6 +383,8 @@ circle:
 # 	git -C duckuments-dist add fall2017
 # 	git -C duckuments-dist commit -a -m "automatic compilation $(shell date)"
 # 	git -C duckuments-dist push --force
+
+.PHONY: builds
 
 builds:
 	python -m mcdp_docs.sync_from_circle duckietown duckuments builds builds/duckuments.html
