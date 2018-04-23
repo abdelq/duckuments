@@ -211,7 +211,11 @@ books: \
 	class_fall2017 \
 	class_fall2017_projects \
 	learning_materials \
-	exercises
+	exercises\
+	code_docs
+
+code_docs: checks update-mcdp update-software
+	./run-book $@ duckietown/catkin_ws/src/
 
 class_fall2017: checks update-mcdp update-software
 	./run-book $@ docs/atoms_80_fall2017_info
