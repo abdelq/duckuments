@@ -5,7 +5,7 @@ TODO: JT: switch intermediate and first videos
 
 ## The final result {#sysid-final-result}
 
-<div figure-id="fig:demo_succeeded-sysid">
+<div figure-id="fig:demo_succeeded-sysid-2">
     <figcaption>Demo of the calibration procedure
     </figcaption>
     <dtvideo src='vimeo:251027149'/>

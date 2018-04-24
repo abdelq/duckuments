@@ -28,7 +28,7 @@ Next Steps: After receiving these components, you are ready to do some [solderin
 [//]: #   (<s>[4 Screws (M3x10)](https://tinyurl.com/y9sjzm4r)</s><s>USD</s>)
 <div markdown="1">
 
- <col2 id='materials' figure-id="tab:materials" figure-caption="Bill of materials">
+ <col2 id='materials2' figure-id="tab:materials2" figure-caption="Bill of materials">
     <s>[LEDs](https://www.adafruit.com/product/848) (`DB17-l`)</s>                         <s>USD 10</s>
     <s>[LED HAT](https://tinyurl.com/ydh9wqp5) (`DB17-l`)</s><s>USD 28.20 for 3 pieces</s>
     <s>[Power Cable](https://tinyurl.com/yaptpssu) (`DB17-l`)</s><s>USD 7.80</s>
