@@ -74,7 +74,7 @@ We seek to find a method that allows a Duckiebot to safely navigate an intersect
 * Fleet planning
 * Coordinators
 
-<div figure-id="fig:1" figure-caption="Stakeholders Diagramm">
+<div figure-id="fig:stakeholders" figure-caption="Stakeholders Diagramm">
     <img src="stakeholders_diagram.png" style="width: 60%"/>
 </div>
 

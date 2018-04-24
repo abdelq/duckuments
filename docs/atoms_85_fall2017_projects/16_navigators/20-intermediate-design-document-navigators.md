@@ -8,7 +8,7 @@ TODO: JT: fix intra-duckiebook links
 ### Logical architecture
 
 
-<div figure-id="fig:1" figure-caption="Simple step diagram">
+<div figure-id="fig:simple-step-diagram" figure-caption="Simple step diagram">
     <img src="logicaldiagram2.png" style="width: 60%"/>
 </div>
 

@@ -1,6 +1,5 @@
 #  System identification: final report {#sysid-final-report status=beta}
 
-
 TODO: JT: switch intermediate and first videos
 
 ## The final result {#sysid-final-result}
@@ -114,6 +113,7 @@ The parameters of the Duckiebot are saved in the file
 ### Opportunity {#sysid-final-opportunity}
 
 #### Current shortcomings
+
 * Human in the loop
     * The car is not able to calibrate itself without human input
     * The procedure is laborious and can be long

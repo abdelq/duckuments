@@ -115,7 +115,7 @@ Modify some file:
 
 To line 117, add "-J-Xmx500M":
 
-<div figure-id="fig:1" >
+<div figure-id="fig:caffe-1" >
     <img src="1.png" style='width: 33em'/>
 </div>
 
@@ -123,7 +123,7 @@ To line 117, add "-J-Xmx500M":
 
 Place the line return "arm" around line 133 (beginning of the _get_cpu_value function):
 
-<div figure-id="fig:2" >
+<div figure-id="fig:caffe-2" >
     <img src="2.png" style='width: 33em'/>
 </div>
 
@@ -139,7 +139,7 @@ Run bazel check if it's working:
 
     $ bazel
 
-<div figure-id="fig:3" >
+<div figure-id="fig:caffe-3" >
     <img src="3.png" style='width: 33em'/>
 </div>
 
@@ -164,7 +164,7 @@ Configure the build:
 
     $ ./configure
 
-<div figure-id="fig:4" >
+<div figure-id="fig:caffe-4" >
     <img src="4.png" style='width: 33em'/>
 </div>
 
@@ -193,7 +193,7 @@ Create a testing python file
 
 Write the following code:
 
-<div figure-id="fig:5" >
+<div figure-id="fig:caffe-5" >
     <img src="5.png" style='width: 33em'/>
 </div>
 
