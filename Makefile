@@ -223,9 +223,6 @@ class_fall2017: checks update-mcdp update-software
 learning_materials: checks update-mcdp update-software
 	./run-book $@ docs/atoms_30_learning_materials
 
-class_fall2017_projects: checks update-mcdp update-software
-	./run-book $@ docs/atoms_85_fall2017_projects
-
 exercises: checks update-mcdp update-software
 	./run-book $@ docs/atoms_40_exercises
 
@@ -254,7 +251,11 @@ software_architecture: checks update-mcdp update-software
 	./run-book $@ docs/atoms_80_duckietown_software
 
 class_fall2017: checks update-mcdp update-software
-	./run-book $@ docs/atoms_80_fall2017_info:docs/atoms_85_fall2017_projects
+	./run-book $@ docs/atoms_80_fall2017_info
+
+
+class_fall2017_projects: checks update-mcdp update-software
+	./run-book $@ docs/atoms_85_fall2017_projects
 
 clean:
 	rm -rf out

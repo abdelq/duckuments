@@ -41,7 +41,9 @@ jobs:
             name: Compile all books
             command: |
                 echo "config colorize 0" > .compmake.rc
-                # 2 cpus
+                # 2 cp
+
+                us
                 make -j2 books
 
         - run:
