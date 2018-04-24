@@ -30,7 +30,7 @@ In our case, the simulator has clean background and rooftop, but real duckietown
     <div figure-id="subfig:sim" figure-caption="Simulator image">
         <img src="sim_img.png" style='width: 20em; height: auto'/>
     </div>
-    <div figure-id="subfig:velo" figure-caption="Real Image">
+    <div figure-id="subfig:real-image" figure-caption="Real Image">
         <img src="real_img.png" style='width: 20em; height: auto'/>
     </div>
 </div>

@@ -4,7 +4,7 @@ Here we briefly describe the theory behind the model in the visual odometry proj
 
 ## Epipolar geometry and DIBR
 
-<div figure-id="fig:the-bigger-picture" figure-caption="Epipolar geometry.">
+<div figure-id="fig:epipolar-geometry" figure-caption="Epipolar geometry.">
      <img src="epipolar.png" width='400' style='width: 5em'/>
 </div>
 

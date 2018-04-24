@@ -101,7 +101,7 @@ The same procedure can be done to get $c_l$.
 
 Using the assumption that we can measure $\dot \theta$ we will then get the semiaxis length $L$.
 
-<div figure-id="fig:mod-kin" figure-caption="Relevant notations for modeling a differential drive robot">
+<div figure-id="fig:mod-kin-modeling" figure-caption="Relevant notations for modeling a differential drive robot">
   <img src="mod-kin.png" style='width: 30em; height:auto'/>
 </div>
 

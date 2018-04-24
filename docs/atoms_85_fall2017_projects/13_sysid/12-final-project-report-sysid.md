@@ -162,7 +162,7 @@ Hence, we first construct a theoretical model and then we try to fit the model t
 
 The Duckiebot was modeled as a symmetric rigid body, according to the following figure.
 
-<div figure-id="fig:mod-kin" figure-caption="Schematics of differential drive robot [](#bib:Modeling)">
+<div figure-id="fig:mod-kin-another" figure-caption="Schematics of differential drive robot [](#bib:Modeling)">
   <img src="mod-kin.png" style='width: 30em; height:auto'/>
 </div>
 

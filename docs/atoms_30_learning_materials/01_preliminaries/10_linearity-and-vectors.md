@@ -89,41 +89,6 @@ f(ax_1 + bx_2) = af(x_1) + bf(x_2), \forall x_i \in \aset{X}, i = \{1,2\}, \fora
 
 This equivalent condition \eqref{eq:linearity} is instead referred to as _superposition principle_, which unveils the bottom line of the concept of linearity: adding up (equivalently, scaling up) inputs results in an added up (equivalently, scaled up) output.
 
-<!--In this section we crisply define the problem object of this chapter. It serves as a very brief recap of exactly what is needed from previous atoms as well. E.g.
-
-Let:
-
-\begin{align}
-\dot{\state}_t = A\state_t+Bu_t \\
-y = C\state_t+Du_t              \label{eq:system}
-\end{align}
-
- be the LTI model of the Duckiebot's plant, with $x \in \statesp$, $y \in \reals^p$ and $u \in \reals^m$. We recall ([Duckiebot Modeling]()) that:
-
-\begin{align}
-A &= \left[  \begin{array}{ccc} a_{11}  & \dots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{n1}  & \dots & a_{nn} \end{array} \right] \\
-B &= \left[ b_1 \,\, \dots \,\, b_m \right]^T \\
-C &=  \left[ c_1 \ \,\, \dots \,\, c_p \right] \\
-D &= 0.
-\end{align}
-
-[...]
-
-Remember you can use the `problem` environment of $\LaTeX$ to formally state a problem:
-
-\begin{problem}[PID]\label{prob:label-prob}
-Given a system \eqref{eq:system} and measurements of the output $\tilde{y}_t = y_t + n_t, n_t \~ \cal{N}(0,\sigma)$, find a set of PID coefficients that meet the specified requirements for:
-- stability,
-- performance,
-- robustness.
-\end{problem}
-
-as shown in ([](#figure:the-bigger-picture)).
-
-<div figure-id="fig:the-bigger-picture" figure-caption="A classical block diagram for PID control. We like to use a lot of clear figures in the Duckiebook.">
-     <img src="placeholder.png" style='width: 15em'/>
-</div>
--->
 
 ## Vectors {#theory-chapter-template-notions}
 
