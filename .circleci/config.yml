@@ -43,7 +43,10 @@ jobs:
                 echo "config colorize 0" > .compmake.rc
                 # 2 cpus
                 make -j2 books
-                # recompile for cross-references
+
+        - run:
+            name: Compile all books again to get cross references again
+            command: |
                 make -j2 books
 
         - store_artifacts:
