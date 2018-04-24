@@ -2,7 +2,7 @@
 
 ## The final result
 
-<div figure-id="fig:example-embed">
+<div figure-id="fig:anti-instagram-video">
     <figcaption>Anti instagram video</figcaption>
     <dtvideo src="vimeo:257258742"/>
 </div>

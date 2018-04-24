@@ -9,7 +9,7 @@ General notes:
 
 Video of the final result:
 
-<div figure-id="fig:example-embed">
+<div figure-id="fig:explicit-coord-video">
     <figcaption> Explicit coordination's video </figcaption>
     <dtvideo src="vimeo:257762830"/>
 </div>

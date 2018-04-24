@@ -12,7 +12,7 @@ Requires: Camera calibration completed. [Camera calibration](#camera-calib)
 
 ## Video of expected results
 
-<div figure-id="fig:example-embed">
+<div figure-id="fig:readme-out-of-place">
     <figcaption>Anti instagram video</figcaption>
     <dtvideo src="vimeo:257258742"/>
 </div>
