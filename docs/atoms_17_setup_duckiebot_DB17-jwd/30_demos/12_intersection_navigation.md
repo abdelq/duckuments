@@ -14,7 +14,7 @@ Requires: Duckietown Version 2.0.
 
 </div>
 
-## Video of expected results {#demo-template-expected}
+## Video of expected results 
 
 This video shows what you should get:
 
@@ -24,18 +24,18 @@ This video shows what you should get:
 </div>
 
 
-## Duckietown setup notes {#demo-template-duckietown-setup}
+## Duckietown setup notes 
 
 * Layout: Duckietown Version 2.0 with at least 1 intersection tile (4- or 3-way)
 * Infrastructure: Traffic signs in the intersection tile according to D-2 3)
 * Weather: Room or sunlight.
 
-## Duckiebot setup notes {#demo-template-duckiebot-setup}
+## Duckiebot setup notes 
 
 
 
 
-## Pre-flight checklist {#demo-template-pre-flight}
+## Pre-flight checklist 
 
 Check: Is the battery is charged enough?
 
@@ -118,5 +118,6 @@ roslaunch intersection_navigation intersection_visualizer_node.launch robot_name
 * My duckiebot does not move -> Could happen if your battery is low, you did not remove the lid of the camera, no april tag is at the intersection or the duckiebot is not placed in front of an intersection
 
 
-## Demo failure demonstration {#demo-template-failure}
+## Demo failure demonstration 
+
 None existing yet.

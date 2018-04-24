@@ -134,6 +134,6 @@ Duckiebots need to have all the dependencies installed. Use the fleet level comm
 
  Once you get bored with only one Duckiebot on the map, or want to expand your business, add a another Duckiebot to your fleet by repeating steps 1-5. You may add a few more Duckiebots like this.
 
- ## Troubleshooting {#demo-template-troubleshooting}
+ ## Troubleshooting 
 
  The fleet planning demo depends on many other packages to work well. You may take the lane following and intersection control packages out of the loop by activating the joystick demo. More details at step 5.

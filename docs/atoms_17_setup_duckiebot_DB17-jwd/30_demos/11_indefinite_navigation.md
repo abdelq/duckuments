@@ -100,6 +100,6 @@ In rqt, the images can be visualized are:
 -  `/![robot name]/line_detector_node/image_with_lines`,
 -  `/![robot name]/lane_filter_node/belief_img`.
 
-## Troubleshooting {#demo-template-troubleshooting}
+## Troubleshooting 
 
-Maintainer: Contact Julien Kindle(ETHZ) via Slack for further assistance.
+Maintainer: Contact Julien Kindle (ETHZ) via Slack for further assistance.

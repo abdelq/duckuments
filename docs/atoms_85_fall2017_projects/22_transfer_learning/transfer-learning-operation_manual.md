@@ -16,26 +16,26 @@ Requires: PyTorch installed on duckiebot and laptop. (On duckiebot, you can eith
 
 </div>
 
-## Video of expected results {#demo-template-expected}
+## Video of expected results 
 
 [link 1 of lane following](https://drive.google.com/open?id=1Ejk0Qw-NuIKNsQFs99nhd0tbmFDdtRvs)
 [link 2 of lane following](https://drive.google.com/file/d/1WLr2g_A2MrHwgDoTQ51GwCw9u2iNH-Zo/view?usp=sharing)
 
-## Duckietown setup notes {#demo-template-duckietown-setup}
+## Duckietown setup notes 
 
 A duckietown with white and yellow lanes. No obstacles on the lane.
 
-## Duckiebot setup notes {#demo-template-duckiebot-setup}
+## Duckiebot setup notes
 
 Make sure the camera is heading ahead. Tighten the screws if necessary. 
 
-## Pre-flight checklist {#demo-template-pre-flight}
+## Pre-flight checklist 
 
 Check: turn on joystick. 
 
 Check: Enough battery of the duckiebot. 
 
-## Demo instructions {#demo-template-run}
+## Demo instructions 
 
 Here, give step by step instructions to reproduce the demo.
 
@@ -78,9 +78,11 @@ You can add `--cuda` if you have gpu available.
 Step 5: Download real images from [link](https://drive.google.com/file/d/1P_X1CYiUOwGZtr476Qk22O-Mlu4O7KTI/view?usp=sharing), and decompress under gym-duckietown folder.
 
 Step 6: Finetune on real images, by run:
-laptop `python finetune.py --use_model2 --epochs 200`
+
+    laptop `python finetune.py --use_model2 --epochs 200`
 
 Step 7: Checkout branch cbschaff-devel and copy model.
+
     duckiebot `git checkout cbschaff-devel`
     duckiebot `catkin_make`
     duckiebot `roscd deep_lane_following`
@@ -91,6 +93,6 @@ Step 8: Run the ros package.
 
     duckiebot `roslaunch deep_lane_following lane_following.launch`
 
-## Troubleshooting {#demo-template-troubleshooting}
+## Troubleshooting 
 
 Contact Chip Schaff or Ruotian Luo(TTIC) via Slack if any trouble occurs. 

@@ -79,7 +79,7 @@ and enjoy the show!
 
 [Demo video](https://drive.google.com/file/d/1zbOqEXugNF9p6Ln8f2nk8CakFrZYiSbp/preview)
 
-## Troubleshooting {#demo-template-troubleshooting}
+## Troubleshooting 
 
 It's networking. If it doesn't work try reinstalling while letting 99 duckies swim in the bathtub and lighting magic candles.
 

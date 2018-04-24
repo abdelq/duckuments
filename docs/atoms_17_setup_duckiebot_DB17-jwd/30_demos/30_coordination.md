@@ -96,7 +96,7 @@ has been published’, place the Duckiebot on the lane and press 'R1'. To switch
 
 * After other robots at the intersection clears (i.e. finished crossing, others gave 'pass' signal), the Duckiebot should start flashing 'I am going' signal and crosses the intersection.
 
-## Troubleshooting {#demo-template-troubleshooting}
+## Troubleshooting 
 
 * When it shows "Event:intersection_go", the Duckiebot does not move. This problem is related to AprilTags.
 

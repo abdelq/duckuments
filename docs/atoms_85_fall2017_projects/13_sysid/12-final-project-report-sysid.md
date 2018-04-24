@@ -87,10 +87,10 @@ Hereby, the Duckiebot is placed on a line (e.g. tape). Afterwards the joystick d
 Now the human operator commands the Duckiebot to go straight for around 2m.
 
 Observe the Duckiebot from the point where it started moving and annotate on which side of the tape
-the Duckiebot drifted ([](#fig:wheel_calibration_lr_drift)).
+the Duckiebot drifted ([](#fig:wheel_calibration_lr_drift-2)).
 
 
-<div figure-id="fig:wheel_calibration_lr_drift" figure-caption="Left/Right drift">
+<div figure-id="fig:wheel_calibration_lr_drift-2" figure-caption="Left/Right drift">
   <img src="wheel_calibration_lr_drift.jpg" style='width: 30em'/>
 </div>
 
@@ -98,7 +98,7 @@ If the Duckiebot drifted to the left side of the tape, decrease the value of $t$
 
     duckiebot: $ rosservice call /${VEHICLE_NAME}/inverse_kinematics_node/set_trim -- 0.01
 
-Or Changing the trim in a negative way, e.g. to -0.01:
+Or changing the trim in a negative way, e.g. to -0.01:
 
     duckiebot: $ rosservice call /${VEHICLE_NAME}/inverse_kinematics_node/set_trim -- -0.01
 
@@ -304,14 +304,13 @@ To reproduce the results see the  [operation manual](#demo-sysid) which includes
 
 For recording the Rosbag, the Duckiebot has to be placed in front of the chessboard at a distance of slightly more than 1 meter in front of the chessboard (~2 duckie tiles), as shown in the image. The heading has to be set iteratively to maximize the time the Duckiebot sees the chessboard.
 
-<div figure-id="fig:calibration_setup" figure-caption="The calibration setup">
+<div figure-id="fig:calibration_setup-2" figure-caption="The calibration setup">
      <img src="calibration_setup.jpg" style='width: 30em'/>
 </div>
 
 You then have to run the calibration procedure
 
     duckiebot $ roslaunch calibration commands.launch veh:=robot name
-
 
 The program will publish at a frequency of 30 Hz in the topic robot_name/wheels_driver_node/wheels_cmd the following commands :
 

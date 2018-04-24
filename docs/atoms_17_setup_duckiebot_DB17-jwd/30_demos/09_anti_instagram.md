@@ -10,7 +10,7 @@ Requires: Lane-following demo has been successfully launched. [Lane-following de
 
 </div>
 
-## Video of expected results {#demo-template-expected}
+## Video of expected results
 
 First, we show a [video](https://drive.google.com/open?id=1XDTNk8NgIlMEyC7R0vyqVm3TSj7Sowc8) of the expected behavior.
 
