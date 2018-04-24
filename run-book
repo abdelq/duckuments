@@ -19,13 +19,15 @@ dist=duckuments-dist
 
 mkdir -p ${dist}
 
+base=http://frankfurt.co-design.science/~duckietown/duckuments2/builds/duckuments/branch/
+
 DISABLE_CONTRACTS=1 mcdp-render-manual \
     --src ${src} \
     --resources docs:${dist} \
     --stylesheet v_manual_split \
     --symbols docs/symbols.tex \
     -o out/${short} \
-    --permalink_prefix http://docs.duckietown.org/branch/${branch}/${short}/out/link.html \
+    --permalink_prefix ${base}/${branch}/${short}/out/link.html\# \
     --split       ${dist}/${short}/out/ \
     --pdf         ${dist}/${short}/out.pdf \
     --output_file ${dist}/${short}/out.html \
