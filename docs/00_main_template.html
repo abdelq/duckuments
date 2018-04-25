@@ -21,11 +21,19 @@
         ga('send', 'pageview');
     </script>
     <style>
-    h1:not(#booktitle) {
-        page-break-before: always;
-    }
+        h1:not(#booktitle) {
+            page-break-before: always;
+        }
+
+        #tocdiv {
+            position: fixed !important;
+            overflow: scroll;
+            height: 90vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
     </style>
-    <link rel="stylesheet" type="text/css" media="screen" href="duckietown.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="duckietown.css"/>
 </head>
 <body>
 </body>
