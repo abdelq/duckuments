@@ -57,6 +57,16 @@ jobs:
             name: Package artifacts
             command:  |
                 bash package-art.sh out/package.tgz
+#
+#        - run:
+#            name: Collecting job failure results
+#            when: always
+#            command: |
+#                mkdir -p out/comptests/junit
+#                comptests-to-junit out/comptests/compmake >  out/comptests/junit/junit.xml
+#
+#        - test-results-store:
+#            path: out/comptests/junit
 
         - store_artifacts:
               path: out/package.tgz

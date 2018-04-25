@@ -5,11 +5,11 @@ in Duckietown.
 
 ## Pointers to documentation
 
-TODO: to write
+TODO: to write pointers
 
 ## Editing YAML files
 
-TODO: to write
+TODO: to write pointers
 
 ## Reading and writing YAML files in Python
 
