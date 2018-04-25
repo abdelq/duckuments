@@ -1,4 +1,4 @@
-# Jupyter  {#jupyter status=draft}
+# Jupyter  {#jupyter status=draf}
 
 ## Installation {#jupyter-install}
 
