@@ -19,7 +19,7 @@ dist=duckuments-dist
 
 mkdir -p ${dist}
 
-base=http://frankfurt.co-design.science/~duckietown/duckuments2/builds/duckuments/branch/
+base=http://docs.duckietown.org/duckuments/branch/
 
 DISABLE_CONTRACTS=1 mcdp-render-manual \
     --src ${src} \
