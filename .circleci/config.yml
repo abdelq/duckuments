@@ -8,6 +8,8 @@ jobs:
               NODE_PATH: /root/project/node_modules
               MPLBACKEND: agg
 
+        resource_class: large
+        
         steps:
         - checkout
         - run:
