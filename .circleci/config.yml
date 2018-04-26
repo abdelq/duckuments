@@ -9,7 +9,7 @@ jobs:
               MPLBACKEND: agg
 
         resource_class: large
-        
+
         steps:
         - checkout
         - run:
@@ -44,12 +44,12 @@ jobs:
             command: |
                 echo "config colorize 0" > .compmake.rc
                 # 2 cpus
-                make -j2 books
+                make -j4 books
 
         - run:
             name: Compile all books again to get cross references again
             command: |
-                make -j2 books
+                make -j4 books
 
         - store_artifacts:
               path: duckuments-dist
