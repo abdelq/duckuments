@@ -269,7 +269,6 @@ class_fall2017_projects: checks update-mcdp update-software
 clean:
 	rm -rf out
 
-
 fall2017: checks update-mcdp update-software
 
 	DISABLE_CONTRACTS=1 mcdp-render-manual \
