@@ -72,11 +72,6 @@ Simply speaking Gaussian mixture models are a more general version of k-Means as
 - Complexity: The theoretical complexity of the GMM approach is similar as k-Means. So it results in $n \cdot k \cdot i$ for the number of data points $n$, centers $k$ and iterations $i$.
 - Difficulties for high dimensional data.
 
-<center>
-<figure>
-<img src="kmeans_vs_gmm.png" alt="kMeans working" style="width: 90%;"/>
-<figcaption> K-Means in comparison with EM algorithm </figcaption>
-</figure>
-</center>
+<img figure-id="fig:kmeans_vs_gmm" figure-caption="K-Means in comparison with EM algorithm " src="kmeans_vs_gmm.png" alt="kMeans working" style="width: 90%;"/>
 
 [ [source] ](https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/ClusterAnalysis_Mouse.svg/450px-ClusterAnalysis_Mouse.svg.png)
