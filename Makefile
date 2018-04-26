@@ -15,6 +15,9 @@ all:
 	ONLY_FOR_REFS=1 make books
 	make books
 
+realclean: clean
+	rm -rf duckuments-dist
+
 .PHONY: $(out_html) checks check-duckietown-software check-programs
 
 .PHONY: builds
@@ -209,8 +212,16 @@ books: \
 	class_fall2017 \
 	class_fall2017_projects \
 	learning_materials \
-	exercises\
-	code_docs
+	exercises \
+	code_docs \
+	guide_for_instructors \
+	deprecated
+
+guide_for_instructors: checks update-mcdp update-software
+	./run-book $@ docs/atoms_12_guide_for_instructors
+
+deprecated: checks update-mcdp update-software
+	./run-book $@ docs/atoms_98_deprecated
 
 code_docs: checks update-mcdp update-software
 	./run-book $@ duckietown/catkin_ws/src/

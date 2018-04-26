@@ -39,7 +39,7 @@ It should look like [](#fig:calibrate_extrinsics1).
 
 
 <div figure-id="fig:calibrate_extrinsics1" figure-caption="">
-  <img src="calibrate_extrinsics1.jpg" style='width: 90%'/>
+  <img src="2_2_2_camera/calibrate_extrinsics1.jpg" style='width: 90%'/>
 </div>
 
 Note the difference between the two types of rectification:
@@ -62,7 +62,7 @@ What this does is simulating what the robot should see, if the models were corre
 
 
 <div figure-id="fig:validate_calibration_out1">
-    <img style='width:40%' src="validate_calibration_out1.jpg"/>
+    <img style='width:40%' src="2_2_2_camera/validate_calibration_out1.jpg"/>
     <figcaption>Result of <code>validate_calibration</code>.</figcaption>
 </div>
 
@@ -72,7 +72,7 @@ It usual achieves impressive calibration results!
 > Simulations are doomed to succeed.
 
 <div figure-id="fig:try_simulated_localization">
-    <img style='width:90%' src="try_simulated_localization.jpg"/>
+    <img style='width:90%' src="2_2_2_camera/try_simulated_localization.jpg"/>
     <figcaption>Output of <code>validate_calibration</code>: localization
     in simulated environment.</figcaption>
 </div>
@@ -96,7 +96,7 @@ The output will be useful to check that everything is ok.
 localizes perfectly.
 
 <div figure-id="fig:oneshot1_all">
-    <img style='width:90%' src="oneshot1_all.jpg"/>
+    <img style='width:90%' src="2_2_2_camera/oneshot/oneshot1_all.jpg"/>
     <figcaption>Output when camera is properly calibrated.</figcaption>
 </div>
 
@@ -108,7 +108,7 @@ Look at the output in the bottom left: clearly the perspective is distorted,
 and there is no way for the robot to localize given the perspective points.
 
 <div figure-id="fig:incorrect1">
-    <img style='width:90%' src="incorrect1.jpg"/>
+    <img style='width:90%' src="2_2_2_camera/incorrect1.jpg"/>
     <figcaption>Output when camera not properly calibrated.</figcaption>
 </div>
 
@@ -122,7 +122,7 @@ of the calibrations useless ([](#fig:calibration_95_percent_success)), and peopl
 
 
 <div figure-id="fig:calibration_95_percent_success">
-    <img style='width:90%' src="calibration_95_percent_success.jpg"/>
+    <img style='width:90%' src="2_2_2_camera/calibration_95_percent_success.jpg"/>
     <figcaption>In 2017, a bug in the calibration made about 5 percent
     of the calibrations useless.</figcaption>
 </div>

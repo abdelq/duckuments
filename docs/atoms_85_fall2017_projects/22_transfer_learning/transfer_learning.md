@@ -12,7 +12,7 @@ Results: Understanding transfer learning and the domain randomization technique 
 This unit introduces the concept of Transfer Learning and how it can be applied to Robotics.
 
 
-## Transfer Learning Definition {#basic-blocks}
+## Transfer Learning Definition 
 
 Transfer learning is a subfield of machine learning that focuses on using knowledge gained while solving one problem to solve a related problem.
 
