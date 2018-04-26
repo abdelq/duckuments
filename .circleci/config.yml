@@ -16,8 +16,14 @@ jobs:
             name: NPM
             command: |
                 curl -sL https://deb.nodesource.com/setup_6.x | bash
-                apt install -y nodejs
+                apt install -y nodejs node-less
                 npm install MathJax-node jsdom@9.3 less
+
+        - run:
+            name: fonts
+            command: |
+                cp -R fonts /usr/share/fonts/my-fonts
+                fc-cache -f -v
 
         - run:
             name: setup MCDP
@@ -30,7 +36,6 @@ jobs:
         - run:
             name: Check Programs
             command: |
-                apt install -y node-less
                 make check-programs
 
         - run:
@@ -43,7 +48,6 @@ jobs:
             name: Compile all books
             command: |
                 echo "config colorize 0" > .compmake.rc
-                # 2 cpus
                 ONLY_FOR_REFS=1 make -j4 books
 
         - run:

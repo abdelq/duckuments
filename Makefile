@@ -12,13 +12,16 @@ duckietown-software=duckietown
 src="docs:$(duckietown-software)/catkin_ws/src:$(duckietown-software)/Makefiles"
 
 all:
-	@echo "To compile master:     make master"
-	@echo "To clean:              make master-clean"
-	@echo "To compile fall2017:   make fall2017"
-	@echo "To clean:              make fall2017-clean"
-	@echo "To compile pdf:        make master-pdf"
+	ONLY_FOR_REFS=1 make books
+	make books
 
 .PHONY: $(out_html) checks check-duckietown-software check-programs
+
+.PHONY: builds
+
+builds:
+	python -m mcdp_docs.sync_from_circle duckietown duckuments builds builds/duckuments.html
+
 
 checks: check-duckietown-software check-programs
 
@@ -83,11 +86,6 @@ process-svg:
 
 	python -m mcdp_docs.process_svg docs/ $(generated_figs) $(tex-symbols)
 
-#
-# duckuments-dist:
-# 	# clone branch "dist"
-# 	git clone --depth 3 git@github.com:duckietown/duckuments-dist.git duckuments-dist
-#
 
 log=misc/bot/logs/generic.log
 log-master-html=misc/bot/logs/master-html/compilation.log
@@ -285,126 +283,3 @@ clean-tmp:
 	find /mnt/tmp/mcdp_tmp_dir-duckietown -type d -ctime +10 -exec rm -rf {} \;
 
 
-circle:
-	DISABLE_CONTRACTS=1 mcdp-render-manual \
-		--src $(src) \
-		--stylesheet v_manual_split \
-		--mathjax 0 \
-		--symbols $(tex-symbols) \
-		-o out/master/html \
-		--output_file out/master/data/1.html \
-		-c "config echo 1; config colorize 0; rparmake n=4"
-
-
-
-
-#
-# compile-html-no-embed:
-# 	DISABLE_CONTRACTS=1 mcdp-render-manual \
-# 		--src $(src) \
-# 		--stylesheet v_manual_split \
-# 		--mathjax 0 \
-# 		--symbols $(tex-symbols) \
-# 		-o $(tmp_files) \
-# 		--output_file $(out_html).tmp -c "config echo 1; config colorize 1; rparmake"
-#
-# 	python -m mcdp_utils_xml.note_errors_inline $(out_html).tmp
-# 	python -m mcdp_docs.add_edit_links  $(out_html).localcss.html < $(out_html).tmp
-# 	# python -m mcdp_docs.embed_css $(out_html) < $(out_html).localcss.html
-# 	cp $(out_html).localcss.html $(out_html)
-# 	$(MAKE) split
-#
-# compile-html-slow:
-# 	DISABLE_CONTRACTS=1 mcdp-render-manual \
-# 		--src $(src) \
-# 		--stylesheet v_manual_split \
-# 		--mathjax 0 \
-# 		--symbols $(tex-symbols) \
-# 		-o $(tmp_files) \
-# 		--output_file $(out_html).tmp -c "config echo 1; config colorize 0; rmake"
-#
-# 	python -m mcdp_utils_xml.note_errors_inline $(out_html).tmp
-# 	python -m mcdp_docs.add_edit_links $(out_html).localcss.html < $(out_html).tmp
-# 	python -m mcdp_docs.embed_css $(out_html) < $(out_html).localcss.html
-#
-# %.pdf: %.html
-# 	prince --javascript -o $@ $<
-# 	# open $@
-
-# split-slow:
-# 	# rm -f $(dist_dir)/duckiebook/*html
-# 	mcdp-split \
-# 		--filename $(out_html) \
-# 		--output_dir $(dist_dir)/duckiebook \
-# 		-o $(tmp_files)/split \
-# 		-c " config echo 1; config colorize 0; rmake" \
-# 		--mathjax \
-# 		--preamble $(tex-symbols)
-#
-# master: checks update-mcdp update-software
-# 	$(MAKE) master-html
-# 	$(MAKE) master-split
-
-
-# # mathjax is 1 in this case
-# DISABLE_CONTRACTS=1 mcdp-render-manual \
-# 	--src $(src) \
-# 	--stylesheet v_manual_blurb \
-# 	--mathjax 1 \
-# 	--symbols $(tex-symbols) \
-# 	-o out/master/pdf \
-# 	--output_file out/master/pdf/duckiebook.html -c "config echo 1; rparmake n=8"
-#
-# python -m mcdp_docs.add_edit_links <  out/master/pdf/duckiebook.html > out/master/pdf/b.html
-#
-# prince --javascript -o out/master/pdf/duckiebook1.pdf out/master/pdf/b.html
-#
-# ./reduce-pdf-size.sh out/master/pdf/duckiebook1.pdf out/master/pdf/duckiebook2.pdf
-#
-# pdftk out/master/pdf/duckiebook2.pdf update_info misc/blank-metadata output out/master/pdf/duckiebook3.pdf
-#
-# pdftk A=out/master/pdf/duckiebook3.pdf B=misc/blank.pdf cat A1-end B output out/master/pdf/duckiebook4.pdf keep_final_id
-#
-#
-# cp out/master/pdf/duckiebook4.pdf duckuments-dist/master/duckiebook.pdf
-
-
-# tmp_files=out/tmp
-# tmp_files2=out/tmp2
-
-
-# compile-pdf-slow: checks check-programs-pdf
-# 	# mathjax is 1 in this case
-# 	DISABLE_CONTRACTS=1 mcdp-render-manual \
-# 		--src $(src) \
-# 		--stylesheet v_manual_blurb \
-# 		--mathjax 1 \
-# 		--symbols $(tex-symbols) \
-# 		-o $(tmp_files2) \
-# 		--output_file $(out_html2).tmp -c "config echo 1; config colorize 0; rmake"
-#
-# 	python -m mcdp_docs.add_edit_links < $(out_html2).tmp > $(out_html2)
-#
-# 	prince --javascript -o /tmp/duckiebook.pdf $(out_html2)
-#
-# 	pdftk A=/tmp/duckiebook.pdf B=misc/blank.pdf cat A1-end B output /tmp/duckiebook2.pdf keep_final_id
-# 	pdftk /tmp/duckiebook2.pdf update_info misc/blank-metadata output $(out_pdf)
-
-# compile-pdf:
-# 	$(MAKE) master-pdf
-
-
-#
-# _upload:
-# 	#git -C duckuments-dist pull -X ours
-# 	echo ignoring errors
-#
-# 	git -C duckuments-dist add master
-# 	git -C duckuments-dist add fall2017
-# 	git -C duckuments-dist commit -a -m "automatic compilation $(shell date)"
-# 	git -C duckuments-dist push --force
-
-.PHONY: builds
-
-builds:
-	python -m mcdp_docs.sync_from_circle duckietown duckuments builds builds/duckuments.html
