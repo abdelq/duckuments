@@ -15,7 +15,19 @@ else
    branch=${CIRCLE_BRANCH}
 fi
 
+
 dist=duckuments-dist
+
+if [ "$ONLY_FOR_REFS" = "" ]
+then
+   options="--pdf ${dist}/${short}/out.pdf --output_file ${dist}/${short}/out.html --split ${dist}/${short}/out/ "
+
+else
+   echo "Skipping polish, ONLY_FOR_REFS"
+   options=""
+fi
+
+
 
 mkdir -p ${dist}
 
@@ -26,9 +38,8 @@ DISABLE_CONTRACTS=1 mcdp-render-manual \
     --resources docs:${dist} \
     --stylesheet v_manual_split \
     --symbols docs/symbols.tex \
+    --output_crossref ${dist}/${short}/crossref.html \
     -o out/${short} \
     --permalink_prefix ${base}/${branch}/${short}/out/link.html\# \
-    --split       ${dist}/${short}/out/ \
-    --pdf         ${dist}/${short}/out.pdf \
-    --output_file ${dist}/${short}/out.html \
+    ${options}\
     -c "config echo 1; ${cmd}"
