@@ -74,7 +74,7 @@ Simply speaking Gaussian mixture models are a more general version of k-Means as
 
 <center>
 <figure>
-<img src="kmeans_vs_gmm.png" alt="kMeans working" style="width: 700px;"/>
+<img src="kmeans_vs_gmm.png" alt="kMeans working" style="width: 90%;"/>
 <figcaption> K-Means in comparison with EM algorithm </figcaption>
 </figure>
 </center>
