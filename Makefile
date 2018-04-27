@@ -292,4 +292,6 @@ duckuments-bot:
 clean-tmp:
 	find /mnt/tmp/mcdp_tmp_dir-duckietown -type d -ctime +10 -exec rm -rf {} \;
 
-
+summaries:
+	cp misc/frames.html duckuments-dist/index.html
+ 	python -m mcdp_docs.summary_from_artefacts duckuments-dist duckuments-dist/summary.html
