@@ -236,7 +236,6 @@ drafts: checks update-mcdp update-software
 preliminaries: checks update-mcdp update-software
 	./run-book $@ docs/atoms_29_preliminaries
 
-
 learning_materials: checks update-mcdp update-software
 	./run-book $@ docs/atoms_30_learning_materials
 
@@ -267,8 +266,6 @@ software_devel: checks update-mcdp update-software
 software_architecture: checks update-mcdp update-software
 	./run-book $@ docs/atoms_80_duckietown_software
 
-class_fall2017: checks update-mcdp update-software
-	./run-book $@ docs/atoms_80_fall2017_info
 
 
 class_fall2017_projects: checks update-mcdp update-software
@@ -302,5 +299,5 @@ clean-tmp:
 
 summaries:
 	cp misc/frames.html duckuments-dist/index.html
-	python -m mcdp_docs.summary_from_artefacts duckuments-dist duckuments-dist/summary.html
-
+	#	python -m mcdp_docs.summary_from_artefacts duckuments-dist duckuments-dist/summary.html
+	python make_index.py duckuments-dist/index2.html duckuments-dist/crossref.html
