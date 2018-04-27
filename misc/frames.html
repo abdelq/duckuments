@@ -125,7 +125,18 @@
     <a target='frame' id="duckuments" onclick="activate(this)" href="duckuments.html">Other builds</a>
 </div>
 
-<iframe name='frame' src="summary.html"/>
+<iframe name='frame'/>
     </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
+<script>
+$(document).ready(function() {
+    currentLocation = localStorage.prevUrl || 'summary.html';
+    console.log(currentLocation);
+    $('#frame').attr('src', currentLocation);
+    $('#frame').load(function() {
+        localStorage.prevUrl = $(this)[0].contentWindow.location.href;
+    })
+})
+    </script>
 </body>
 </html>

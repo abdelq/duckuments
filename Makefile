@@ -2,9 +2,9 @@
 duckuments-branch=master
 dist_dir=duckuments-dist/$(duckuments-branch)
 
-out_html=$(dist_dir)/duckiebook.html
-out_html2=$(dist_dir)/duckiebook_pdf.html
-out_pdf=$(dist_dir)/duckiebook.pdf
+#out_html=$(dist_dir)/duckiebook.html
+#out_html2=$(dist_dir)/duckiebook_pdf.html
+#out_pdf=$(dist_dir)/duckiebook.pdf
 
 tex-symbols=docs/symbols.tex
 duckietown-software=duckietown
@@ -18,7 +18,7 @@ all:
 realclean: clean
 	rm -rf duckuments-dist
 
-.PHONY: $(out_html) checks check-duckietown-software check-programs
+.PHONY:  checks check-duckietown-software check-programs
 
 .PHONY: builds
 
@@ -90,82 +90,82 @@ process-svg:
 	python -m mcdp_docs.process_svg docs/ $(generated_figs) $(tex-symbols)
 
 
-log=misc/bot/logs/generic.log
-log-master-html=misc/bot/logs/master-html/compilation.log
-log-master-pdf=misc/bot/logs/master-pdf/compilation.log
-log-fall2017=misc/bot/logs/fall2017/compilation.log
-log-fall2017-pdf=misc/bot/logs/fall2017-pdf/compilation.log
-
-automatic-compile-cleanup:
-	echo "\n\nautomatic-compile-cleanup killing everything" >> $(log)
-	-killall -9 /home/duckietown/scm/duckuments/deploy/bin/python
-	$(MAKE) master-clean
-	$(MAKE) fall2017-clean
-	rm -f misc/bot/locks/*
-	rm -f /home/duckietown/scm/duckuments/duckuments-dist/.git/index.lock
-	echo "\n\nautomatic-compile-cleanup killing everything\n\n" >> $(log-master-html)
-	echo "\n\nautomatic-compile-cleanup killing everything\n\n" >> $(log-master-pdf)
-	echo "\n\nautomatic-compile-cleanup killing everything\n\n" >> $(log-fall2017)
-
-cleanup-repo:
-	echo "\n\n Cleaning up the repo " >> $(log)
-	df -h / >> $(log)
-	git -C duckuments-dist show-ref -s HEAD > duckuments-dist/.git/shallow
-	git -C duckuments-dist reflog expire --expire=0 --all
-	git -C duckuments-dist prune
-	git -C duckuments-dist prune-packed
-	echo "\nafter cleanup\n" >> $(log)
-	df -h / >> $(log)
-
-
-automatic-compile-fall2017:
-	git pull
-	touch $(log-fall2017)
-	echo "\n\n Starting" >> $(log-fall2017)
-	date >> $(log-fall2017)
-	-$(MAKE) fall2017
-	echo "  succeded fall 2017" >> $(log-fall2017)
-	-$(MAKE) upload
-	echo "  succeded upload" >> $(log-fall2017)
-	date >> $(log-fall2017)
-	echo "Done." >> $(log-fall2017)
-
-
-automatic-compile-master-html:
-	#git pull
-	touch $(log-master-html)
-	echo "\n\nStarting" >> $(log-master-html)
-	date >> $(log-master-html)
-	nice -n 10 $(MAKE) master-html
-	echo "  succeded html " >> $(log-master-html)
-	nice -n 10 $(MAKE) master-split
-	echo "  succeded split " >> $(log-master-html)
-	date >>$(log-master-html)
-	echo "Done." >> $(log-master-html)
-
-automatic-compile-master-pdf:
-	nice -n 10 $(MAKE) master-pdf
-	echo "\n\nStarting" >> $(log-master-pdf)
-	date >> $(log-master-pdf)
-	echo "  succeded PDF  " >> $(log-master-pdf)
+#log=misc/bot/logs/generic.log
+#log-master-html=misc/bot/logs/master-html/compilation.log
+#log-master-pdf=misc/bot/logs/master-pdf/compilation.log
+#log-fall2017=misc/bot/logs/fall2017/compilation.log
+#log-fall2017-pdf=misc/bot/logs/fall2017-pdf/compilation.log
+##
+#automatic-compile-cleanup:
+#	echo "\n\nautomatic-compile-cleanup killing everything" >> $(log)
+#	-killall -9 /home/duckietown/scm/duckuments/deploy/bin/python
+#	$(MAKE) master-clean
+#	$(MAKE) fall2017-clean
+#	rm -f misc/bot/locks/*
+#	rm -f /home/duckietown/scm/duckuments/duckuments-dist/.git/index.lock
+#	echo "\n\nautomatic-compile-cleanup killing everything\n\n" >> $(log-master-html)
+#	echo "\n\nautomatic-compile-cleanup killing everything\n\n" >> $(log-master-pdf)
+#	echo "\n\nautomatic-compile-cleanup killing everything\n\n" >> $(log-fall2017)
+#
+#cleanup-repo:
+#	echo "\n\n Cleaning up the repo " >> $(log)
+#	df -h / >> $(log)
+#	git -C duckuments-dist show-ref -s HEAD > duckuments-dist/.git/shallow
+#	git -C duckuments-dist reflog expire --expire=0 --all
+#	git -C duckuments-dist prune
+#	git -C duckuments-dist prune-packed
+#	echo "\nafter cleanup\n" >> $(log)
+#	df -h / >> $(log)
+#
+#
+#automatic-compile-fall2017:
+#	git pull
+#	touch $(log-fall2017)
+#	echo "\n\n Starting" >> $(log-fall2017)
+#	date >> $(log-fall2017)
+#	-$(MAKE) fall2017
+#	echo "  succeded fall 2017" >> $(log-fall2017)
 #	-$(MAKE) upload
-	date >>  $(log-master-pdf)
-	echo "Done." >> $(log-master-pdf)
+#	echo "  succeded upload" >> $(log-fall2017)
+#	date >> $(log-fall2017)
+#	echo "Done." >> $(log-fall2017)
+#
+#
+#automatic-compile-master-html:
+#	#git pull
+#	touch $(log-master-html)
+#	echo "\n\nStarting" >> $(log-master-html)
+#	date >> $(log-master-html)
+#	nice -n 10 $(MAKE) master-html
+#	echo "  succeded html " >> $(log-master-html)
+#	nice -n 10 $(MAKE) master-split
+#	echo "  succeded split " >> $(log-master-html)
+#	date >>$(log-master-html)
+#	echo "Done." >> $(log-master-html)
+#
+#automatic-compile-master-pdf:
+#	nice -n 10 $(MAKE) master-pdf
+#	echo "\n\nStarting" >> $(log-master-pdf)
+#	date >> $(log-master-pdf)
+#	echo "  succeded PDF  " >> $(log-master-pdf)
+##	-$(MAKE) upload
+#	date >>  $(log-master-pdf)
+#	echo "Done." >> $(log-master-pdf)
+#
+#automatic-compile-fall2017-pdf:
+#	echo "\n\nStarting" >> $(log-fall2017-pdf)
+#	date >> $(log-fall2017-pdf)
+#	nice -n 10 $(MAKE) fall2017-pdf
+#	echo "  succeded PDF  " >> $(log-fall2017-pdf)
+#	date >>  $(log-fall2017-pdf)
+#	echo "Done." >> $(log-fall2017-pdf)
+#
+#upload:
+#	echo Not uploading
 
-automatic-compile-fall2017-pdf:
-	echo "\n\nStarting" >> $(log-fall2017-pdf)
-	date >> $(log-fall2017-pdf)
-	nice -n 10 $(MAKE) fall2017-pdf
-	echo "  succeded PDF  " >> $(log-fall2017-pdf)
-	date >>  $(log-fall2017-pdf)
-	echo "Done." >> $(log-fall2017-pdf)
-
-upload:
-	echo Not uploading
-
-
-master-pdf: checks check-programs-pdf
-	echo "This is now already implemented by make master"
+#
+#master-pdf: checks check-programs-pdf
+#	echo "This is now already implemented by make master"
 
 
 update-mcdp:
@@ -178,11 +178,10 @@ update-software: checks
 compile:
 	$(MAKE) master
 
-
-index:
-	mcdp-render -D misc book_index
-	cp misc/book_index.html duckuments-dist/index.html
-
+#
+#index:
+#	mcdp-render -D misc book_index
+#	cp misc/book_index.html duckuments-dist/index.html
 
 
 master: checks update-mcdp update-software
