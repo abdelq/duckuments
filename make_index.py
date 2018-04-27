@@ -1,4 +1,5 @@
 import sys
+from collections import OrderedDict
 
 from bs4 import Tag
 import yaml
@@ -12,77 +13,83 @@ from mcdp_utils_xml import bs
 books = """
 
 base:
-    title: Base
+    title: Information about the project
     
-    books:
-        duckumentation: 
-            title: Documentation
-             
-        the_duckietown_project:
+    books: !!omap
+    
+        - the_duckietown_project:
             title: The Duckietown Project
                     
-        guide_for_instructors:
-            title: Guide instructors
+        - guide_for_instructors:
+            title: Guide for instructors
+
+        - duckumentation: 
+            title: Contributing to the documentation
+             
      
 tech:
-    title: Tech
+    title: Operation manuals
     
-    books:
+    books: !!omap
             
-        opmanual_duckiebot_base:
+        - opmanual_duckiebot_base:
             title: Duckiebot manual
         
-        opmanual_duckietown:
+        - opmanual_duckietown:
             title: Duckietown manual
              
 SW:
-    title: SW
-    books:
-        software_carpentry:
+    title: Software development
+    
+    books: !!omap
+        - software_carpentry:
             title: Software Carpentry
              
-        software_devel:
+        - software_devel:
             title: Software development
              
-        software_architecture:
+        - software_architecture:
             title: Software arch
             
                 
-        code_docs:
+        - code_docs:
             title: Code docs
              
      
-fall2017:
-    title: Fall 2017
-    books:
-            
-        class_fall2017:
-            title: Fall 2017
-             
-        class_fall2017_projects:
-            title: Fall 2017 projects
      
 theory:
-    title: Theory
-    books:
+    title: Class materials
+     
+    books: !!omap
             
-        learning_materials:
+        - learning_materials:
             title: Learning materials
              
-        exercises:
+        - exercises:
             title: exercises     
         
-        preliminaries:
+        - preliminaries:
             title: Preliminaries
+
+
+fall2017:
+    title: Past editions
+    books: !!omap
+            
+        - class_fall2017:
+            title: Fall 2017
+             
+        - class_fall2017_projects:
+            title: Fall 2017 projects
+            
 misc:
     title: misc
     
-    books:
-        drafts:
+    books: !!omap
+        - drafts:
             title: Drafts
-             
-             
-        deprecated:
+            
+        - deprecated:
             title: Deprecated
     
 """
@@ -109,16 +116,23 @@ body {
     padding: 0 !important;
     
 }
-
+h2 {
+margin-top: 0.5em !important;
+}
 div.group {
 column-count: 3;
+width: 100%;
+display: block;
+background-color: #eaeaea;
+padding: 1em;
+margin: 1em;
 }
 
 div.book-div {
     width: 26em;
     background-color: #ddd;
     margin: 1em;
-    break-inside: avoid;
+    /*break-inside: avoid;*/
     padding: 10px;
 }
 ul,li {
@@ -143,11 +157,14 @@ all_crossrefs = Tag(name='div')
 for id_group, group in groups.items():
     divgroup =Tag(name='div')
     divgroup.attrs['class'] = 'group'
-    title = group['title']
-    divgroup.append(title)
+
+    h0 = Tag(name='h1')
+    h0.append(group['title'])
+    divgroup.append(h0)
 
     books = group['books']
     divbook = Tag(name='div')
+    books = OrderedDict(books)
     for id_book, book in books.items():
         d = os.path.join(dist, id_book)
         d0 = dist
