@@ -5,49 +5,127 @@
         body {
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
 
         #top-panel {
             height: 3em;
             margin: 0;
-        }
-
-        #top-panel A {
+            width: 100%;
+            /*display: block;*/
             font-size: smaller;
             font-family: sans-serif;
+            color: gray;
+            font-weight: bold;
+        }
+        #top-panel A + A:before {
+            margin-left: 1em;
+        }
+        #top-panel A {
+            /*border: solid 1px red;*/
             display: inline-block;
-            padding: 2px;
+            padding: 5px;
+            text-decoration: none;
+        }
+
+        #top-panel A:visited {
+            color: black;
         }
 
         iframe {
-            width: calc(100% - 1em);
-            height: calc(100vh - 4em);
+            /*display: block;*/
+            width: 100%;
+            /*height: calc(100vh - 4em);*/
             margin: 0;
             padding: 0;
         }
+
+
+        a:active {
+            color: blue;
+        }
+        #top-panel a {
+            color: black;
+        }
+        #top-panel a.active {
+            background-color: yellow;
+            color: black;
+        }
+
+        body {
+            height: 100%;
+        }
+        #container {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display:table;
+        }
+        iframe, #top-panel {
+            display: table-row;
+        }
+        iframe {
+            height: 100%;
+        }
+
     </style>
 </head>
 <body>
+<script>
+    function activate(e) {
+        s = e.getAttribute('id');
 
+        current = document.body.getAttribute('current');
 
+        if (s != current) {
+            e.classList.add('active');
+
+            if (current != null) {
+                document.getElementById(current).classList.remove('active');
+            }
+
+            document.body.setAttribute('current', s);
+        }
+    }
+</script>
+
+<div id="container">
 <div id="top-panel">
-     <a target='frame' href="index.html">Panel</a>
+    <a target='frame' id="summary" onclick="activate(this)" href="summary.html">Summary</a>
 
-    <a target='frame' href="class_fall2017/out/index.html">class_fall2017</a>
-    <a target='frame' href="class_fall2017_projects/out/index.html">class_fall2017_projects</a>
-    <a target='frame' href="deprecated/out/index.html">deprecated</a>
-    <a target='frame' href="duckumentation/out/index.html">duckumentation</a>
-    <a target='frame' href="duckumentation/out/index.html">duckumentation</a>
-    <a target='frame' href="code_docs/out/index.html">guide_for_instructors</a>
-    <a target='frame' href="learning_materials/out/index.html">learning_materials</a>
-    <a target='frame' href="opmanual_duckiebot_base/out/index.html">opmanual_duckiebot_base</a>
-    <a target='frame' href="opmanual_duckietown/out/index.html">opmanual_duckietown</a>
-    <a target='frame' href="software_architecture/out/index.html">software_architecture</a>
-    <a target='frame' href="software_carpentry/out/index.html">software_carpentry</a>
-    <a target='frame' href="software_devel/out/index.html">software_devel</a>
-    <a target='frame' href="the_duckietown_project/out/index.html">the_duckietown_project</a>
+    Books:
+
+    <span id="books">
+    <a target='frame' id="the_duckietown_project" onclick="activate(this)" href="the_duckietown_project/out/index.html">The Duckietown Project</a>
+    <a target='frame' id="code_docs" onclick="activate(this)" href="code_docs/out/index.html">Guide for instructors</a>
+
+    <a target='frame' id="duckumentation" onclick="activate(this)"
+       href="duckumentation/out/index.html">Contributing to documentation</a>
+    <a target='frame' id="opmanual_duckiebot_base" onclick="activate(this)"
+       href="opmanual_duckiebot_base/out/index.html">Duckiebot operation manual </a>
+    <a target='frame' id="opmanual_duckietown" onclick="activate(this)" href="opmanual_duckietown/out/index.html">Duckietown operation manual</a>
+
+    <a target='frame' id="learning_materials" onclick="activate(this)" href="learning_materials/out/index.html">Learning materials</a>
+
+    <a target='frame' id="software_architecture" onclick="activate(this)" href="software_architecture/out/index.html">SW Architecture</a>
+    <a target='frame' id="software_carpentry" onclick="activate(this)" href="software_carpentry/out/index.html">SW Carpentry</a>
+    <a target='frame' id="software_devel" onclick="activate(this)"
+       href="software_devel/out/index.html">SW Development</a>
+
+
+    <a target='frame' id="class_fall2017" onclick="activate(this)" href="class_fall2017/out/index.html">Fall 2017
+        class</a>
+    <a target='frame' id="class_fall2017_projects" onclick="activate(this)"
+       href="class_fall2017_projects/out/index.html">Fall 2017 projects</a>
+
+    <a target='frame' id="deprecated" onclick="activate(this)" href="deprecated/out/index.html">Deprecated material</a>
+    <a target='frame' id="drafts" onclick="activate(this)" href="drafts/out/index.html">Drafts</a>
+        </span>
+    Misc:
+    <a target='frame' id="duckuments" onclick="activate(this)" href="duckuments.html">Other builds</a>
 </div>
 
 <iframe name='frame' src="summary.html"/>
+    </div>
 </body>
 </html>
