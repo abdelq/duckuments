@@ -37,22 +37,21 @@ tech:
         - opmanual_duckietown:
             title: Duckietown manual
              
+        - software_carpentry:
+            title: Reference for useful commands
+             
 SW:
     title: Software development
     
     books: !!omap
-        - software_carpentry:
-            title: Software Carpentry
-             
-        - software_devel:
-            title: Software development
-             
         - software_architecture:
-            title: Software arch
-            
-                
+            title: Duckietown software architecture
+
+        - software_devel:
+            title: Software development in Duckietown
+             
         - code_docs:
-            title: Code docs
+            title: Packages documentation
              
      
      
@@ -65,7 +64,7 @@ theory:
             title: Learning materials
              
         - exercises:
-            title: exercises     
+            title: Exercises     
         
         - preliminaries:
             title: Preliminaries
@@ -139,8 +138,8 @@ h3 {
 
 div.group {
     column-count: auto;
-    column-width: 26em;
-    width: 100%;
+    column-width: 22em;
+    width: calc(100% - 4em);
     display: block;
     background-color: #eaeaea;
     padding: 1em;
@@ -149,12 +148,15 @@ div.group {
 }
 
 div.book-div span a:nth-child(2) {
-    margin-right: 5em;
+    margin-right: 2em;
 }
 div.book-div {
     background-color: #ddd;
     margin: 1em;
     padding: 10px;
+}
+.div_inside {
+    break-inside: avoid;
 }
 ul,li {
 list-style: none;
@@ -193,13 +195,16 @@ for id_group, group in groups.items():
 
         div = Tag(name='div')
         div.attrs['class'] = 'book-div'
+        div_inside = Tag(name='div')
+        div_inside.attrs['class'] = 'div_inside'
         links = get_links2(artefacts)
         # p  = Tag(name='p')
         h = Tag(name='h3')
         h.append(book['title'])
         # p.append(h)
-        div.append(h)
-        div.append(links)
+        div_inside.append(h)
+        div_inside.append(links)
+        div.append(div_inside)
 
         toc = os.path.join(d, 'out/toc.html')
         if os.path.exists(toc):
