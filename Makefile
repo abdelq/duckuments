@@ -300,4 +300,4 @@ clean-tmp:
 summaries:
 	cp misc/frames.html duckuments-dist/index.html
 	#	python -m mcdp_docs.summary_from_artefacts duckuments-dist duckuments-dist/summary.html
-	python make_index.py duckuments-dist/index2.html duckuments-dist/crossref.html
+	python make_index.py duckuments-dist/summary.html duckuments-dist/crossref.html
