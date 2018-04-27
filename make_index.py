@@ -1,14 +1,13 @@
 import sys
 from collections import OrderedDict
 
-from bs4 import Tag
 import yaml
+from bs4 import Tag
 from mcdp_docs.mcdp_render_manual import get_extra_content
 from mcdp_docs.sync_from_circle import get_artefacts, get_links2
 from mcdp_report.html import get_css_filename
 from mcdp_utils_misc import write_data_to_file, AugmentedResult
 from mcdp_utils_xml import bs
-
 
 books = """
 
@@ -105,34 +104,52 @@ head = Tag(name='head')
 meta = Tag(name='meta')
 meta.attrs['content'] = "text/html; charset=utf-8"
 meta.attrs['http-equiv'] = "Content-Type"
+
+stylesheet = 'v_manual_split'
+link = Tag(name='link')
+link['rel'] = 'stylesheet'
+link['type'] = 'text/css'
+link['href'] = get_css_filename('compiled/%s' % stylesheet)
+head.append(link)
+
 body = Tag(name='body')
 
 style = Tag(name='style')
+# language=css
 style.append("""
 body {
-    /* column-count: 3; */
     width: 100% !important;
     margin: 1em !important;
     padding: 0 !important;
     
 }
-h2 {
-margin-top: 0.5em !important;
+
+.toc_what {
+    display: none;
 }
+
+h3 {
+    font-size: 150%;
+    color: black;
+    text-align: left;
+    border-bottom: 0;
+    margin-top: 0;
+    padding-top: 0;
+}
+
 div.group {
-column-count: 3;
-width: 100%;
-display: block;
-background-color: #eaeaea;
-padding: 1em;
-margin: 1em;
+    column-count: auto;
+    column-width: 26em;
+    width: 100%;
+    display: block;
+    background-color: #eaeaea;
+    padding: 1em;
+    margin: 1em;
 }
 
 div.book-div {
-    width: 26em;
     background-color: #ddd;
     margin: 1em;
-    /*break-inside: avoid;*/
     padding: 10px;
 }
 ul,li {
@@ -151,11 +168,11 @@ head.append(meta)
 html.append(head)
 html.append(body)
 
-divgroups = Tag(name='divgroups')
+divgroups = Tag(name='div')
 all_crossrefs = Tag(name='div')
 
 for id_group, group in groups.items():
-    divgroup =Tag(name='div')
+    divgroup = Tag(name='div')
     divgroup.attrs['class'] = 'group'
 
     h0 = Tag(name='h1')
@@ -174,7 +191,7 @@ for id_group, group in groups.items():
         div.attrs['class'] = 'book-div'
         links = get_links2(artefacts)
         # p  = Tag(name='p')
-        h = Tag(name='h2')
+        h = Tag(name='h3')
         h.append(book['title'])
         # p.append(h)
         div.append(h)
@@ -202,15 +219,6 @@ extra = get_extra_content(AugmentedResult())
 extra.attrs['id'] = 'extra'
 body.append(extra)
 body.append(divgroups)
-
-
-
-stylesheet = 'v_manual_split'
-link = Tag(name='link')
-link['rel'] = 'stylesheet'
-link['type'] = 'text/css'
-link['href'] = get_css_filename('compiled/%s' % stylesheet)
-head.append(link)
 
 for e in body.select('.notes-panel'):
     e.extract()
