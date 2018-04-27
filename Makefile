@@ -213,6 +213,7 @@ books: \
 	learning_materials \
 	exercises \
 	code_docs \
+	drafts \
 	guide_for_instructors \
 	deprecated
 
@@ -227,6 +228,10 @@ code_docs: checks update-mcdp update-software
 
 class_fall2017: checks update-mcdp update-software
 	./run-book $@ docs/atoms_80_fall2017_info
+
+drafts: checks update-mcdp update-software
+	./run-book $@ docs/atoms_99_drafts
+
 
 learning_materials: checks update-mcdp update-software
 	./run-book $@ docs/atoms_30_learning_materials
