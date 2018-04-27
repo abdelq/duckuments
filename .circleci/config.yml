@@ -55,6 +55,12 @@ jobs:
             command: |
                 make -j4 books
 
+
+        - run:
+            name: create index
+            command: |
+              python -m mcdp_docs.summary_from_artefacts duckuments-dist duckuments-dist/index.html
+              
         - store_artifacts:
               path: duckuments-dist
               destination: duckuments-dist
