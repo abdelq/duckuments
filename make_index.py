@@ -145,8 +145,12 @@ div.group {
     background-color: #eaeaea;
     padding: 1em;
     margin: 1em;
+    min-height: 12em;
 }
 
+div.book-div span a:nth-child(2) {
+    margin-right: 5em;
+}
 div.book-div {
     background-color: #ddd;
     margin: 1em;
