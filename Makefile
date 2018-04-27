@@ -215,7 +215,8 @@ books: \
 	code_docs \
 	drafts \
 	guide_for_instructors \
-	deprecated
+	deprecated \
+	preliminaries
 
 guide_for_instructors: checks update-mcdp update-software
 	./run-book $@ docs/atoms_12_guide_for_instructors
@@ -231,6 +232,9 @@ class_fall2017: checks update-mcdp update-software
 
 drafts: checks update-mcdp update-software
 	./run-book $@ docs/atoms_99_drafts
+
+preliminaries: checks update-mcdp update-software
+	./run-book $@ docs/atoms_29_preliminaries
 
 
 learning_materials: checks update-mcdp update-software
