@@ -36,7 +36,9 @@ base=http://docs.duckietown.org/duckuments/branch/
 
 NP=${PWD}/node_modules:${NODE_PATH}
 
-DISABLE_CONTRACTS=1 NODE_PATH=${NP} mcdp-render-manual \
+source deploy/bin/activate
+
+DISABLE_CONTRACTS=1 NODE_PATH=${NP}  mcdp-render-manual \
     --src ${src} \
     --resources docs:${dist} \
     --stylesheet v_manual_split \
