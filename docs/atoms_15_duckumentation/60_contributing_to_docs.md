@@ -1,4 +1,6 @@
-# Contributing to the documentation {#contribute-to-docs status=ready}
+# Contributing to the documentation {#part:contribute-to-docs status=ready}
+
+# Introduction {status=ready}
 
 ## Where the documentation is
 
@@ -14,7 +16,6 @@ It is then processed by a series of scripts to create this output:
 You can find all these artifacts produced at the site [`docs.duckietown.org`](http://docs.duckietown.org).
 
 
-
 ## Editing links
 
 The simplest way to contribute to the documentation is to click any of the "✎" icons next to the headers.
@@ -22,7 +23,7 @@ The simplest way to contribute to the documentation is to click any of the "✎"
 They link to the "edit" page in Github. There, one can make and commit the edits in only a few seconds.
 
 
-## Installing the documentation system {#installing-docs-system}
+# Installing the documentation system {#installing-docs-system}
 
 In the following, we are going to assume that the documentation system is installed in `~/duckuments`. However, it can be installed anywhere.
 
@@ -89,28 +90,12 @@ Use this to install dependencies:
     $ cd ~/duckuments
     $ make install    
 
-Note: If you get a permission error here, it means you have not properly
-activated the virtual environment.
-
-Other distributions: If you are not on Ubuntu 16, depending on your system, you might need to install these other dependencies:
-
-    $ pip install numpy matplotlib
 
 
-## Compiling the documentation (updated Sep 12) {#compiling-master status=recently-updated }
-
-<div class="check" markdown="1">
-
-Make sure you have deployed and activated the virtual environment. You can check
-this by checking which `python` is active:
-
-    $ which python
-    /home/![user]/duckuments/deploy/bin/python
-
-</div>
+## Compiling the documentation   {#compiling-master}
 
 
-To compile the master versions of the docs, run:
+To compile all the books, run:
 
     $ make clean all 
 
@@ -121,14 +106,58 @@ To see the result, open the file
 If you want to do incremental compilation, you can omit the `clean` and just
 use:
 
-    $ make master
+    $ make all
+    
+## Compiling a single book
 
-This will be faster. However, sometimes it might get confused. At that point,
-do `make master-clean`.
+After you have compiled all the books, 
+you can use one of the following commands to re-compile one single book:
+
+    $ make duckumentation
+    $ make the_duckietown_project 
+    $ make opmanual_duckiebot_base 
+    $ make opmanual_duckiebot_fancy 
+    $ make opmanual_duckietown 
+    $ make software_carpentry 
+    $ make software_devel 
+    $ make software_architecture 
+    $ make class_fall2017 
+    $ make class_fall2017_projects 
+    $ make learning_materials 
+    $ make exercises 
+    $ make drafts 
+    $ make guide_for_instructors 
+    $ make deprecated 
+    $ make preliminaries
+
+If compilation is unsuccesfull, try:
+
+    $ make clean
 
 
+## Reporting problems
 
-## The workflow to edit documentation (updated Sep 12) {#workflow status=recently-updated}
+First, see the section <a href="#markduck-troubleshooting" class='name_number'></a> for
+common problems and their resolution.
+
+Please report problems with the duckuments using [the `duckuments` issue tracker][tracker].
+If it is urgent, please tag people (Andrea); otherwise these are processed in batch mode every few days.
+
+[tracker]: https://github.com/duckietown/duckuments/issues
+
+If you have a problem with a generated PDF, please attach the offending PDF.
+
+If you say something like "This happens for Figure 3", then it is hard to know which figure you are referencing exactly, because numbering changes from commit to commit.
+
+If you want to refer to specific parts of the text, please commit all your work on your branch,
+and obtain the name of the commit using the following commands:
+
+    $ git -C ~/duckuments rev-parse HEAD      # commit for duckuments
+    $ git -C ~/duckuments/mcdp rev-parse HEAD # commit for mcdp
+ 
+
+
+## The workflow to edit documentation  {#workflow status=deprecated}
 
 This is the basic workflow:
 
@@ -141,27 +170,3 @@ This is the basic workflow:
 
 
 See: Create a pull request from the command-line using [`hub`](#hub).
-
-## Reporting problems
-
-First, see the section <a href="#markduck-troubleshooting" class='name_number'></a> for
-common problems and their resolution.
-
-Please report problems with the duckuments using [the `duckuments` issue tracker][tracker].
-If it is urgent, please tag people (Andrea); otherwise these are processed in batch mode every few days.
-
-[tracker]: https://github.com/duckietown/duckuments/issues
-
-
-If you have a problem with a generated PDF, please attach the offending PDF.
-
-If you say something like "This happens for Figure 3", then it is hard
-to know which figure you are referencing exactly, because numbering changes
-from commit to commit.
-
-If you want to refer to specific parts of the text, please commit all your work on your branch,
-and obtain the name of the commit using the following commands:
-
-    $ git -C ~/duckuments rev-parse HEAD      # commit for duckuments
-    $ git -C ~/duckuments/mcdp rev-parse HEAD # commit for mcdp
- 
