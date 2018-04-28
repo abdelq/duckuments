@@ -9,19 +9,22 @@ all:
 	make books
 	make summaries
 
+summaries:
+	cp misc/frames.html duckuments-dist/index.html
+	#	python -m mcdp_docs.summary_from_artefacts duckuments-dist duckuments-dist/summary.html
+	python make_index.py duckuments-dist/summary.html duckuments-dist/crossref.html
+
 realclean: clean
 	rm -rf duckuments-dist
 
 .PHONY: checks check-duckietown-software check-programs
 
-.PHONY: builds
+.PHONY: builds install update-software
 
 install:
 	virtualenv --system-site-packages --no-site-packages deploy
 	$(MAKE) update-software
 
-update-mcdp:
-		
 update-software:
 	git submodule sync --recursive
 	git submodule update --init --recursive
@@ -124,84 +127,79 @@ books: \
 	deprecated \
 	preliminaries
 
-guide_for_instructors: checks update-mcdp update-software
+guide_for_instructors: checks 
 	. deploy/bin/activate && ./run-book $@ docs/atoms_12_guide_for_instructors
 
-deprecated: checks update-mcdp update-software
+deprecated: checks 
 	./run-book $@ docs/atoms_98_deprecated
 
-code_docs: check-duckietown-software checks update-mcdp update-software
+code_docs: check-duckietown-software checks 
 	./run-book $@ duckietown/catkin_ws/src/
 
-class_fall2017: checks update-mcdp update-software
+class_fall2017: checks 
 	./run-book $@ docs/atoms_80_fall2017_info
 
-drafts: checks update-mcdp update-software
+drafts: checks 
 	./run-book $@ docs/atoms_99_drafts
 
-preliminaries: checks update-mcdp update-software
+preliminaries: checks 
 	./run-book $@ docs/atoms_29_preliminaries
 
-learning_materials: checks update-mcdp update-software
+learning_materials: checks 
 	./run-book $@ docs/atoms_30_learning_materials
 
-exercises: checks update-mcdp update-software
+exercises: checks 
 	./run-book $@ docs/atoms_40_exercises
 
-duckumentation: checks update-mcdp update-software
+duckumentation: checks 
 	./run-book $@ docs/atoms_15_duckumentation
 
-the_duckietown_project: checks update-mcdp update-software
+the_duckietown_project: checks 
 	./run-book $@ docs/atoms_10_the_duckietown_project
 
-opmanual_duckiebot_base: checks update-mcdp update-software
+opmanual_duckiebot_base: checks 
 	./run-book $@ docs/atoms_17_setup_duckiebot_DB17-jwd
 
-opmanual_duckiebot_fancy: checks update-mcdp update-software
+opmanual_duckiebot_fancy: checks 
 	./run-book $@ docs/atoms_19_setup_duckiebot_DB17-wjdcl
 
-opmanual_duckietown: checks update-mcdp update-software
+opmanual_duckietown: checks 
 	./run-book $@ docs/atoms_18_setup_duckietown
 
-software_carpentry: checks update-mcdp update-software
+software_carpentry: checks 
 	./run-book $@ docs/atoms_60_software_reference
 
-software_devel: checks update-mcdp update-software
+software_devel: checks 
 	./run-book $@ docs/atoms_70_software_devel_guide
 
-software_architecture: checks update-mcdp update-software
+software_architecture: checks 
 	./run-book $@ docs/atoms_80_duckietown_software
 
-class_fall2017_projects: checks update-mcdp update-software
+class_fall2017_projects: checks 
 	./run-book $@ docs/atoms_85_fall2017_projects
 
 clean:
 	rm -rf out
-
-fall2017: checks update-mcdp update-software
-
-	DISABLE_CONTRACTS=1 mcdp-render-manual \
-		--src $(src) \
-		--stylesheet v_manual_split \
-		--no_resolve_references \
-		--symbols $(tex-symbols) \
-		--compose fall2017.version.yaml \
-		-o out/fall2017\
-		--output_file duckuments-dist/fall2017/duckiebook.html \
-		--split duckuments-dist/fall2017/duckiebook/ \
-		--pdf duckuments-dist/fall2017/duckiebook.pdf \
-		 -c "config echo 1; rparmake"
-
-fall2017-clean:
-	rm -rf out/fall2017
+#
+#fall2017: checks
+#
+#	DISABLE_CONTRACTS=1 mcdp-render-manual \
+#		--src $(src) \
+#		--stylesheet v_manual_split \
+#		--no_resolve_references \
+#		--symbols $(tex-symbols) \
+#		--compose fall2017.version.yaml \
+#		-o out/fall2017\
+#		--output_file duckuments-dist/fall2017/duckiebook.html \
+#		--split duckuments-dist/fall2017/duckiebook/ \
+#		--pdf duckuments-dist/fall2017/duckiebook.pdf \
+#		 -c "config echo 1; rparmake"
+#
+#fall2017-clean:
+#	rm -rf out/fall2017
 
 duckuments-bot:
 	python misc/slack_message.py
 
 clean-tmp:
 	find /mnt/tmp/mcdp_tmp_dir-duckietown -type d -ctime +10 -exec rm -rf {} \;
-
-summaries:
-	cp misc/frames.html duckuments-dist/index.html
-	#	python -m mcdp_docs.summary_from_artefacts duckuments-dist duckuments-dist/summary.html
-	python make_index.py duckuments-dist/summary.html duckuments-dist/crossref.html

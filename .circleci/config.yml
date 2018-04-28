@@ -28,10 +28,11 @@ jobs:
         - run:
             name: setup MCDP
             command: |
-                git submodule sync --recursive
-                git submodule update --init --recursive
-                pip install -r mcdp/requirements.txt
-                cd mcdp && python setup.py develop
+                make install
+                #git submodule sync --recursive
+                #git submodule update --init --recursive
+                #pip install -r mcdp/requirements.txt
+                #cd mcdp && python setup.py develop
 
         - run:
             name: Check Programs

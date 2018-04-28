@@ -64,36 +64,15 @@ The command `--depth 100` tells it we don't care about the whole history.
 
 ### Setup the virtual environment
 
-Next, we will create a virtual environment using inside  the `~/duckuments`
-directory. 
-
-Make sure you are running Python 2.7.x. Python 3.x is not supported at the moment.
-
-Change into that directory:
-
-    $ cd ~/duckuments
-
-Create the virtual environment using `virtualenv`:
-
-    $ virtualenv --system-site-packages deploy
-
-In other distributions you might need to use `venv` instead of `virtualenv`.
-
-Activate the virtual environment:
-
-    $ source ~/duckuments/deploy/bin/activate
-
-### Installing dependencies
-
-Use this to install dependencies:
+Use this to install a virtual environment and dependencies:
 
     $ cd ~/duckuments
     $ make install    
 
+TODO: In other distributions you might need to use `venv` instead of `virtualenv`.
 
 
 ## Compiling the documentation   {#compiling-master}
-
 
 To compile all the books, run:
 
@@ -135,6 +114,23 @@ If compilation is unsuccesfull, try:
     $ make clean
 
 
+## The workflow to edit documentation  {#workflow status=deprecated}
+
+TODO: write update workflow
+
+This is the basic workflow:
+
+1. Create a branch called `![yourname]-branch` in the `duckuments` repository.
+1. Edit the Markdown in the `![yourname]-branch` branch.
+2. Run `make master` to make sure it compiles.
+3. Commit the Markdown and push on the `![yourname]-branch`  branch.
+4. Create a pull request.
+5. Tag the group `duckietown/gardeners`.
+
+
+See: Create a pull request from the command-line using [`hub`](#hub).
+
+
 ## Reporting problems
 
 First, see the section <a href="#markduck-troubleshooting" class='name_number'></a> for
@@ -149,24 +145,8 @@ If you have a problem with a generated PDF, please attach the offending PDF.
 
 If you say something like "This happens for Figure 3", then it is hard to know which figure you are referencing exactly, because numbering changes from commit to commit.
 
-If you want to refer to specific parts of the text, please commit all your work on your branch,
-and obtain the name of the commit using the following commands:
+If you want to refer to specific parts of the text, please commit all your work on your branch, and obtain the name of the commit using the following commands:
 
     $ git -C ~/duckuments rev-parse HEAD      # commit for duckuments
     $ git -C ~/duckuments/mcdp rev-parse HEAD # commit for mcdp
  
-
-
-## The workflow to edit documentation  {#workflow status=deprecated}
-
-This is the basic workflow:
-
-1. Create a branch called `![yourname]-branch` in the `duckuments` repository.
-1. Edit the Markdown in the `![yourname]-branch` branch.
-2. Run `make master` to make sure it compiles.
-3. Commit the Markdown and push on the `![yourname]-branch`  branch.
-4. Create a pull request.
-5. Tag the group `duckietown/gardeners`.
-
-
-See: Create a pull request from the command-line using [`hub`](#hub).

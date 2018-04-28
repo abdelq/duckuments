@@ -1,4 +1,7 @@
-# Documentation style guide {#style-guide status=ready}
+
+# Documentation style guide {#part:style-guide status=ready}
+
+# Style guide {#documentation-format status=ready}
 
 This chapter describes the conventions for writing the technical documentation.
 

@@ -1,3 +1,5 @@
+# Documentation format {#part:documentation-format status=ready}
+ 
 # Basic Markduck guide {#documentation-manual status=ready}
 
 The Duckiebook is written in Markduck, a Markdown dialect.
