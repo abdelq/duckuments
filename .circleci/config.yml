@@ -48,12 +48,12 @@ jobs:
             name: Compile all books
             command: |
                 echo "config colorize 0" > .compmake.rc
-                ONLY_FOR_REFS=1 make -j4 books
+                ONLY_FOR_REFS=1 make -j4 code_docs books
 
         - run:
             name: Compile all books again to get cross references again
             command: |
-                make -j4 books
+                make -j4 code_docs books
 
         - run:
             name: create index

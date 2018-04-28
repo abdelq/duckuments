@@ -4,6 +4,7 @@ tex-symbols=docs/symbols.tex
 duckietown-software=duckietown
 
 all:
+	make update-software
 	ONLY_FOR_REFS=1 make books
 	make books
 	make summaries
@@ -16,21 +17,23 @@ realclean: clean
 .PHONY: builds
 
 install:
- 	virtualenv --system-site-packages deploy
- 	$(MAKE) update-dependencies
+	virtualenv --system-site-packages --no-site-packages deploy
+	$(MAKE) update-software
 
-update-dependencies:
-	source deploy/activate
+update-mcdp:
+		
+update-software:
 	git submodule sync --recursive
 	git submodule update --init --recursive
-	pip install -r mcdp/requirements.txt
-	cd mcdp && python setup.py develop
+	. deploy/bin/activate && pip install -r mcdp/requirements.txt && pip install numpy matplotlib
+	. deploy/bin/activate && cd mcdp && python setup.py develop
 
 builds:
+	cp misc/jquery* builds/
 	python -m mcdp_docs.sync_from_circle duckietown duckuments builds builds/duckuments.html
 
 
-checks: check-duckietown-software check-programs
+checks: check-programs
 
 check-programs-pdf:
 	@which  pdftk >/dev/null || ( \
@@ -94,27 +97,10 @@ process-svg:
 	python -m mcdp_docs.process_svg docs/ $(generated_figs) $(tex-symbols)
 
 
-update-software: checks
-	-git -C $(duckietown-software) pull
-
-compile:
-	$(MAKE) master
+#update-software: checks
+	# -git -C $(duckietown-software) pull
 
 
-master: checks update-mcdp update-software
-	DISABLE_CONTRACTS=1 mcdp-render-manual \
-		--src $(src) \
-		--stylesheet v_manual_split \
-		--symbols $(tex-symbols) \
-		-o out/master \
-		--permalink_prefix http://purl.org/dth/ \
-		--split       duckuments-dist/master/duckiebook/ \
-		--pdf         duckuments-dist/master/duckiebook.pdf \
-		--output_file duckuments-dist/master/duckiebook.html \
-		-c "config echo 1; config colorize 1; rparmake"
-
-master-clean:
-	rm -rf out/master
 
 books: \
 	duckumentation \
@@ -129,19 +115,18 @@ books: \
 	class_fall2017_projects \
 	learning_materials \
 	exercises \
-	code_docs \
 	drafts \
 	guide_for_instructors \
 	deprecated \
 	preliminaries
 
 guide_for_instructors: checks update-mcdp update-software
-	./run-book $@ docs/atoms_12_guide_for_instructors
+	. deploy/bin/activate && ./run-book $@ docs/atoms_12_guide_for_instructors
 
 deprecated: checks update-mcdp update-software
 	./run-book $@ docs/atoms_98_deprecated
 
-code_docs: checks update-mcdp update-software
+code_docs: check-duckietown-software checks update-mcdp update-software
 	./run-book $@ duckietown/catkin_ws/src/
 
 class_fall2017: checks update-mcdp update-software
