@@ -258,7 +258,7 @@ opmanual_duckietown: checks update-mcdp update-software
 	./run-book $@ docs/atoms_18_setup_duckietown
 
 software_carpentry: checks update-mcdp update-software
-	./run-book $@ docs/atoms_60_software_reference/12_software_carpentry
+	./run-book $@ docs/atoms_60_software_reference
 
 software_devel: checks update-mcdp update-software
 	./run-book $@ docs/atoms_70_software_devel_guide

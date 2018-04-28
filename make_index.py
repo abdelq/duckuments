@@ -11,8 +11,8 @@ from mcdp_utils_misc import write_data_to_file, AugmentedResult
 from mcdp_utils_xml import bs, gettext
 
 books = """
-
-base:
+!!omap
+- base:
     title: Information about the project
     
     abstract: |
@@ -33,7 +33,7 @@ base:
             title: Contributing to the documentation
              
      
-tech:
+- tech:
     title: Operation manuals
     
     abstract: |
@@ -51,7 +51,7 @@ tech:
         - software_carpentry:
             title: Reference for useful commands
              
-SW:
+- SW:
     title: Software development
     
     books: !!omap
@@ -66,7 +66,7 @@ SW:
              
      
      
-theory:
+- theory:
     title: Class materials
      
     books: !!omap
@@ -81,7 +81,7 @@ theory:
             title: Preliminaries
 
 
-fall2017:
+- fall2017:
     title: Past editions
     books: !!omap
             
@@ -91,8 +91,11 @@ fall2017:
         - class_fall2017_projects:
             title: Fall 2017 projects
             
-misc:
-    title: misc
+- misc:
+    title: Miscellanea
+    
+    abstract: |
+        Other content
     
     books: !!omap
         - drafts:
@@ -103,7 +106,7 @@ misc:
     
 """
 
-groups = yaml.load(books)
+groups = OrderedDict(yaml.load(books))
 
 import os
 
@@ -279,5 +282,11 @@ for e in body.select('.notes-panel'):
 out = sys.argv[1]
 write_data_to_file(str(html), out)
 
+manifest = []
+manifest.append(dict(display='summary', filename=os.path.basename(out)))
+mf = os.path.join(os.path.dirname(out), 'summary.manifest.yaml')
+write_data_to_file(yaml.dump(manifest), mf)
+
 out_crossrefs = sys.argv[2]
 write_data_to_file(str(all_crossrefs), out_crossrefs)
+
