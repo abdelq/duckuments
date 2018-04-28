@@ -3,6 +3,7 @@ from collections import OrderedDict
 
 import yaml
 from bs4 import Tag
+from mcdp_docs.embed_css import embed_css_files
 from mcdp_docs.mcdp_render_manual import get_extra_content
 from mcdp_docs.sync_from_circle import get_artefacts, get_links2
 from mcdp_report.html import get_css_filename
@@ -228,6 +229,8 @@ extra = get_extra_content(AugmentedResult())
 extra.attrs['id'] = 'extra'
 body.append(extra)
 body.append(divgroups)
+
+embed_css_files(html)
 
 for e in body.select('.notes-panel'):
     e.extract()
