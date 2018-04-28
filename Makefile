@@ -18,15 +18,14 @@ realclean: clean
 .PHONY: builds
 
 install:
- 	virtualenv --system-site-packages deploy
- 	$(MAKE) update-dependencies
+	virtualenv --system-site-packages deploy
+	$(MAKE) update-dependencies
 
 update-dependencies:
-	source deploy/activate
 	git submodule sync --recursive
 	git submodule update --init --recursive
-	pip install -r mcdp/requirements.txt
-	cd mcdp && python setup.py develop
+	. deploy/bin/activate && pip install -r mcdp/requirements.txt
+	. deploy/bin/activate && cd mcdp && python setup.py develop
 
 builds:
 	python -m mcdp_docs.sync_from_circle duckietown duckuments builds builds/duckuments.html
