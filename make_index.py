@@ -193,6 +193,17 @@ display: none;
 .toc_ul-depth-3 {
 display: none;
 }
+.toc_a_for_book {
+    font-size: 140%;
+    font-weight: bold;
+    color: purple !important;
+    margin-bottom: 0;
+    margin-top: 0.3em;
+    border-bottom: solid 2px black;
+}
+.toc_a_for_part {
+    padding-top: 0;
+}
 """)
 head.append(style)
 head.append(meta)
@@ -207,15 +218,17 @@ for id_group, group in groups.items():
     divgroup = Tag(name='div')
     divgroup.attrs['class'] = 'group'
 
-    h0 = Tag(name='h1')
-    h0.append(group['title'])
 
-    divgroup.append(h0)
 
-    if 'abstract' in group:
-        p = Tag(name='p')
-        p.append(group['abstract'])
-        divgroup.append(p)
+    if True:
+        h0 = Tag(name='h1')
+        h0.append(group['title'])
+
+        if 'abstract' in group:
+            p = Tag(name='p')
+            p.append(group['abstract'])
+            divgroup.append(p)
+        divgroup.append(h0)
 
     books = group['books']
     divbook = Tag(name='div')
@@ -236,17 +249,16 @@ for id_group, group in groups.items():
             if 'error' in s or 'warning' in s or 'task' in s:
                 a['class'] = 'EWT'
         # p  = Tag(name='p')
-        h = Tag(name='h3')
-        h.append(book['title'])
-        # p.append(h)
-        div_inside.append(h)
-        if 'abstract' in book:
-            p = Tag(name='p')
-            p.append(book['abstract'])
-            div_inside.append(p)
+        if False:
+            h = Tag(name='h3')
+            h.append(book['title'])
+            # p.append(h)
+            div_inside.append(h)
+            if 'abstract' in book:
+                p = Tag(name='p')
+                p.append(book['abstract'])
+                div_inside.append(p)
 
-        if 'abstract' in book:
-            div_inside.append(book['abstract'])
         div_inside.append(links)
         div.append(div_inside)
 

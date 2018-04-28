@@ -1,4 +1,6 @@
-#  The Duckietown project {#book:duckietown-project}
+#  The Duckietown project {#book:duckietown-project status=ready}
+
+# General {#part:general-info status=ready}
 
 # What is Duckietown? {#what-is-duckietown status=beta}
 
@@ -20,7 +22,7 @@ In addition, the Duckietown platform is also suitable for research.
 
 <!-- TODO: add references to papers submitted/published with it. -->
 
-<!-- Duckietown has been recently incorporated as a non-profit foundation. -->
+
 
 ## Learn about the Duckietown educational experience
 

@@ -111,8 +111,7 @@ process-svg:
 books: \
 	duckumentation \
 	the_duckietown_project \
-	opmanual_duckiebot_base \
-	opmanual_duckiebot_fancy \
+	opmanual_duckiebot \
 	opmanual_duckietown \
 	software_carpentry \
 	software_devel \
@@ -156,11 +155,8 @@ duckumentation: checks
 the_duckietown_project: checks 
 	./run-book $@ docs/atoms_10_the_duckietown_project
 
-opmanual_duckiebot_base: checks 
-	./run-book $@ docs/atoms_17_setup_duckiebot_DB17-jwd
-
-opmanual_duckiebot_fancy: checks 
-	./run-book $@ docs/atoms_19_setup_duckiebot_DB17-wjdcl
+opmanual_duckiebot: checks
+	./run-book $@ docs/atoms_17_opmanual_duckiebot
 
 opmanual_duckietown: checks 
 	./run-book $@ docs/atoms_18_setup_duckietown
