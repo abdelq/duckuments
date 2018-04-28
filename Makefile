@@ -3,8 +3,6 @@
 tex-symbols=docs/symbols.tex
 duckietown-software=duckietown
 
-# src="docs:$(duckietown-software)/catkin_ws/src:$(duckietown-software)/Makefiles"
-
 all:
 	ONLY_FOR_REFS=1 make books
 	make books
