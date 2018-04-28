@@ -42,7 +42,7 @@ check-programs-pdf:
 
 check-programs:
 	(\
-	source deploy/bin/activate; \
+	. deploy/bin/activate; \
 	\
 	which  bibtex2html >/dev/null || ( \
 		echo "You need to install bibtex2html."; \
