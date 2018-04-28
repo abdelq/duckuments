@@ -41,27 +41,31 @@ check-programs-pdf:
 		exit 1)
 
 check-programs:
-	@which  bibtex2html >/dev/null || ( \
+	(\
+	source deploy/bin/activate; \
+	\
+	which  bibtex2html >/dev/null || ( \
 		echo "You need to install bibtex2html."; \
-		exit 2)
-
-	@which  mcdp-render >/dev/null  || ( \
+		exit 2); \
+	\
+	which  mcdp-render >/dev/null  || ( \
 		echo "The program mcdp-render is not found"; \
 		echo "You are not in the virtual environment."; \
-		exit 3)
-
-	@which  mcdp-split >/dev/null  || ( \
+		exit 3); \
+	\
+	which  mcdp-split >/dev/null  || ( \
 		echo "The program mcdp-split is not found"; \
 		echo "You need to run 'python setup.py develop' from mcdp/."; \
-		exit 4)
-
-	@which  convert >/dev/null  || ( \
+		exit 4); \
+	\
+	which  convert >/dev/null  || ( \
 		echo "You need to install ImageMagick"; \
-		exit 2)
-
-	@which  gs >/dev/null  || ( \
+		exit 2); \
+	\
+	which  gs >/dev/null  || ( \
 		echo "You need to install Ghostscript (used by ImageMagick)."; \
-		exit 2)
+		exit 2); \
+	)
 
 	@echo All programs installed.
 
