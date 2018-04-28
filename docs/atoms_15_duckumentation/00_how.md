@@ -1,1 +1,1 @@
-# Duckumentation documentation {#book:contribute}
+# Duckumentation documentation {#book:contribute status=ready}

@@ -23,7 +23,7 @@ The simplest way to contribute to the documentation is to click any of the "✎"
 They link to the "edit" page in Github. There, one can make and commit the edits in only a few seconds.
 
 
-# Installing the documentation system {#installing-docs-system}
+# Installing the documentation system {#installing-docs-system status=ready}
 
 In the following, we are going to assume that the documentation system is installed in `~/duckuments`. However, it can be installed anywhere.
 

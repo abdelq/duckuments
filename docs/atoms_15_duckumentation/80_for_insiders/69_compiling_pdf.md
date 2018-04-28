@@ -1,4 +1,4 @@
-# \*Compiling the PDF version  {#duckuments-pdf status=ready}
+# \*Compiling the PDF version  {#duckuments-pdf status=deprecated}
 
 This part describes how to compile the PDF version.
 
