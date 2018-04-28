@@ -282,8 +282,7 @@ for e in body.select('.notes-panel'):
 out = sys.argv[1]
 write_data_to_file(str(html), out)
 
-manifest = []
-manifest.append(dict(display='summary', filename=os.path.basename(out)))
+manifest = [dict(display='summary', filename=os.path.basename(out))]
 mf = os.path.join(os.path.dirname(out), 'summary.manifest.yaml')
 write_data_to_file(yaml.dump(manifest), mf)
 

@@ -1,0 +1,1 @@
+# Geometry {#part:prelim-geometry}

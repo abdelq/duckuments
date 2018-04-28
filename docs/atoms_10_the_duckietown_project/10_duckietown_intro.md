@@ -1,4 +1,4 @@
-#  The Duckietown project {#part:duckietown-project}
+#  The Duckietown project {#book:duckietown-project}
 
 # What is Duckietown? {#what-is-duckietown status=beta}
 

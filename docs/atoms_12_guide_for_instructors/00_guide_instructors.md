@@ -1,3 +1,3 @@
-# Guide for instructors {#guide-instructors status=draft}
+# Guide for instructors {#book:guide-instructors status=draft}
 
 TODO: to write guide for instructors

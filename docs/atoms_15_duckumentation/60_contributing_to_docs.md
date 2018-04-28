@@ -8,14 +8,12 @@ The documentation is written as a series of small files in Markdown format.
 
 It is then processed by a series of scripts to create this output:
 
-* [a publication-quality PDF][master-pdf];
-* [an online HTML version, split in multiple pages][master-split];
-* [a one-page version][master-html].
+* a publication-quality PDF;
+* an online HTML version;
 
-[master-pdf]: http://book.duckietown.org/master/duckiebook.pdf
-[master-html]: http://book.duckietown.org/master/duckiebook.html
-[master-split]: http://book.duckietown.org/master/duckiebook/index.html
-<!-- * [HTML (single-page)][master-html]; -->
+You can find all these artifacts produced at the site [`docs.duckietown.org`](http://docs.duckietown.org).
+
+
 
 ## Editing links
 
@@ -26,11 +24,9 @@ They link to the "edit" page in Github. There, one can make and commit the edits
 
 ## Installing the documentation system {#installing-docs-system}
 
-In the following, we are going to assume that the documentation system is
-installed in `~/duckuments`. However, it can be installed anywhere.
+In the following, we are going to assume that the documentation system is installed in `~/duckuments`. However, it can be installed anywhere.
 
-We are also going to assume that you have setup
-a Github account with working public keys.
+We are also going to assume that you have setup a Github account with working public keys.
 
 See: [Basic SSH config](#ssh-local-configuration).
 
@@ -52,16 +48,13 @@ On Ubuntu 16.04, these are the dependencies to install:
     $ sudo apt install bibtex2html pdftk
     $ sudo apt install imagemagick
 
-
-
 ### Download the `duckuments` repo
 
 Download the `duckietown/duckuments` repository in the `~/duckuments` directory:
 
     $ git lfs clone --depth 100 git@github.com:duckietown/duckuments ~/duckuments
 
-Here, note we are using `git lfs clone` -- it's much faster, because it downloads
-the Git LFS files in parallel.
+Here, note we are using `git lfs clone` -- it's much faster, because it downloads the Git LFS files in parallel.
 
 If it fails, it means that you do not have Git LFS installed. See [](#git-lfs).
 
@@ -71,7 +64,9 @@ The command `--depth 100` tells it we don't care about the whole history.
 ### Setup the virtual environment
 
 Next, we will create a virtual environment using inside  the `~/duckuments`
-directory. Make sure you are running Python 2.7.x. Python 3.x is not supported at the moment.
+directory. 
+
+Make sure you are running Python 2.7.x. Python 3.x is not supported at the moment.
 
 Change into that directory:
 
@@ -81,26 +76,18 @@ Create the virtual environment using `virtualenv`:
 
     $ virtualenv --system-site-packages deploy
 
-Other distributions: In other distributions you might need to use `venv` instead of `virtualenv`.
+In other distributions you might need to use `venv` instead of `virtualenv`.
 
 Activate the virtual environment:
 
     $ source ~/duckuments/deploy/bin/activate
 
-### Setup the `mcdp` external repository
+### Installing dependencies
 
-Make sure you are in the directory:
+Use this to install dependencies:
 
     $ cd ~/duckuments
-
-Clone the `mcdp` external repository, with the branch `duckuments`.
-
-    $ git clone -b duckuments git@github.com:AndreaCensi/mcdp
-
-Install it and its dependencies:
-
-    $ cd ~/duckuments/mcdp
-    $ python setup.py develop
+    $ make install    
 
 Note: If you get a permission error here, it means you have not properly
 activated the virtual environment.
@@ -109,9 +96,6 @@ Other distributions: If you are not on Ubuntu 16, depending on your system, you 
 
     $ pip install numpy matplotlib
 
-You also should run:
-
-    $ pip install -U SystemCmd==2.0.0
 
 ## Compiling the documentation (updated Sep 12) {#compiling-master status=recently-updated }
 
@@ -125,31 +109,14 @@ this by checking which `python` is active:
 
 </div>
 
-<!--
-Then:
-
-    $ cd ~/duckuments
-    $ mkdir duckuments-dist
-
- This creates the directory `duckuments-dist`, which contains
-the "live" website published by Github using the "Github Pages" mechanism at the URL `book.duckietown.org`.
-
-<div class="check" markdown="1">
-
-At this point, please make sure that you have these two `.git` folders:
-
-    ~/duckuments/.git
-    ~/duckuments/duckuments-dist/.git
-
-</div> -->
 
 To compile the master versions of the docs, run:
 
-    $ make master-clean master
+    $ make clean all 
 
 To see the result, open the file
 
-    ./duckuments-dist/master/duckiebook/index.html
+    ./duckuments-dist/index.html
 
 If you want to do incremental compilation, you can omit the `clean` and just
 use:
@@ -159,33 +126,6 @@ use:
 This will be faster. However, sometimes it might get confused. At that point,
 do `make master-clean`.
 
-### Compiling the Fall 2017 version only (introduced Sep 12) {#compiling-fall2017 status=recently-updated}
-
-To compile the Fall 2017 versions of the docs, run:
-
-    $ make fall2017-clean fall2017
-
-To see the result, open the file
-
-    ./duckuments-dist/master/duckiebook/index.html
-
-
-For incremental compilation, use:
-
-    $ make fall2017
-
-### Single-file compilation {#compile-single-file}
-
-There is also the option to compile one single file.
-
-To do this, use:
-
-    $ ./compile-single ![path to .md file]
-
-This is the fastest way to see the results of the editing; however, there are limitations:
-
-- no links to other sections will work.
-- not all images might be found.
 
 
 ## The workflow to edit documentation (updated Sep 12) {#workflow status=recently-updated}
@@ -224,26 +164,4 @@ and obtain the name of the commit using the following commands:
 
     $ git -C ~/duckuments rev-parse HEAD      # commit for duckuments
     $ git -C ~/duckuments/mcdp rev-parse HEAD # commit for mcdp
-
-<!--
-JT: this is a test to show how to edit the docs
--->
-
-
-<!-- don't need to do it manually.
-
-To deploy the documentation, jump into the `DUCKUMENTS/duckuments-dist` directory.
-
-Run the command `git branch`. If the out does not say that you are on the branch `gh-pages`,
-then one of the steps before was done incorrectly.
-
-    $ cd $DUCKUMENTS/duckuments-dist
-    $ git branch
-    ...
-    * gh-pages
-    ...
-
-Now, after triple checking that you are in the `gh-pages` branch, you can
-use `git status` to see the files that were added or modified,
-and simply use `git add`, `git commit` and `git push` to push the files
-to Github. -->
+ 

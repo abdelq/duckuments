@@ -55,7 +55,6 @@ jobs:
             command: |
                 make -j4 books
 
-
         - run:
             name: create index
             command: |
