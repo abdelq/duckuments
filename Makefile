@@ -123,7 +123,7 @@ books: \
 	preliminaries
 
 guide_for_instructors: checks update-mcdp update-software
-	./run-book $@ docs/atoms_12_guide_for_instructors
+	. deploy/bin/activate && ./run-book $@ docs/atoms_12_guide_for_instructors
 
 deprecated: checks update-mcdp update-software
 	./run-book $@ docs/atoms_98_deprecated
