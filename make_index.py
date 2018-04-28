@@ -8,17 +8,23 @@ from mcdp_docs.mcdp_render_manual import get_extra_content
 from mcdp_docs.sync_from_circle import get_artefacts, get_links2
 from mcdp_report.html import get_css_filename
 from mcdp_utils_misc import write_data_to_file, AugmentedResult
-from mcdp_utils_xml import bs
+from mcdp_utils_xml import bs, gettext
 
 books = """
 
 base:
     title: Information about the project
     
+    abstract: |
+        This is general information about the project
+        and how to contribute to it.
+    
     books: !!omap
     
         - the_duckietown_project:
             title: The Duckietown Project
+            abstract: |
+                Learn about the history and current status.
                     
         - guide_for_instructors:
             title: Guide for instructors
@@ -29,6 +35,10 @@ base:
      
 tech:
     title: Operation manuals
+    
+    abstract: |
+    
+        These are the operation manuals.
     
     books: !!omap
             
@@ -123,7 +133,19 @@ body {
     padding: 0 !important;
     
 }
-
+.EWT {
+    display: none;
+    font-weight: bold;
+    font-size: smaller;
+    color: darkblue;
+} 
+a.EWT {
+    text-decoration: none;
+    font-family: arial;
+} 
+.show_todos .EWT {
+    display: inline;
+}
 .toc_what {
     display: none;
 }
@@ -184,7 +206,13 @@ for id_group, group in groups.items():
 
     h0 = Tag(name='h1')
     h0.append(group['title'])
+
     divgroup.append(h0)
+
+    if 'abstract' in group:
+        p = Tag(name='p')
+        p.append(group['abstract'])
+        divgroup.append(p)
 
     books = group['books']
     divbook = Tag(name='div')
@@ -199,11 +227,23 @@ for id_group, group in groups.items():
         div_inside = Tag(name='div')
         div_inside.attrs['class'] = 'div_inside'
         links = get_links2(artefacts)
+
+        for a in links.select('a'):
+            s = gettext(a)
+            if 'error' in s or 'warning' in s or 'task' in s:
+                a['class'] = 'EWT'
         # p  = Tag(name='p')
         h = Tag(name='h3')
         h.append(book['title'])
         # p.append(h)
         div_inside.append(h)
+        if 'abstract' in book:
+            p = Tag(name='p')
+            p.append(book['abstract'])
+            div_inside.append(p)
+
+        if 'abstract' in book:
+            div_inside.append(book['abstract'])
         div_inside.append(links)
         div.append(div_inside)
 
@@ -226,6 +266,8 @@ for id_group, group in groups.items():
     divgroups.append(divgroup)
 
 extra = get_extra_content(AugmentedResult())
+
+
 extra.attrs['id'] = 'extra'
 body.append(extra)
 body.append(divgroups)
